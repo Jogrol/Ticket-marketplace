@@ -9,9 +9,12 @@ export default class Event extends BaseEntity {
   @Column('text', {nullable:false})
   name: string
   @Column('text', {nullable:false})
+  image: string
+  @Column('text', {nullable:false})
   description: string
-  @Column('date', {nullable:false})
-  start_date: DateConstructor
-  @Column('date', {nullable:false})
-  end_date: DateConstructor
+  @Column('text', {nullable:false})
+  start_date: Date
+  @Column('text', {nullable:false})
+  end_date: Date
+
 }
