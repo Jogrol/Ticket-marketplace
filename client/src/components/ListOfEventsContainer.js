@@ -1,9 +1,10 @@
 import React from 'react'
 import {loadEvents} from '../actions/events'
 import {connect} from 'react-redux'
+import ListOfEvents from './ListOfEvents'
 
 
-class EventsListContainer extends React.Component {
+class ListOfEventsContainer extends React.Component {
   
  componentDidMount() {
     this.props.loadEvents()
@@ -11,7 +12,7 @@ class EventsListContainer extends React.Component {
 
   render() {
      if (!this.props.events) return "loading..."
-    return <p>Hello there</p>
+    return  <ListOfEvents events={this.props.events} />
   }
 }
 
@@ -19,4 +20,4 @@ const mapStateToProps = state => ({
   events: state.events
 })
 
-export default connect(mapStateToProps, {loadEvents})(EventsListContainer)
+export default connect(mapStateToProps, {loadEvents})(ListOfEventsContainer)
