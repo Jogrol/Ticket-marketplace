@@ -12,7 +12,7 @@ const eventsFetched = (events) => (
 
 export const loadEvents = () => (dispatch, getState) => {
     // when the state already contains events, we don't fetch them again
-    if (getState().events) return
+    if (getState().events) return null
   
     // a GET /events request
     request(`${baseUrl}/events`)
