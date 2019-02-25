@@ -1,5 +1,5 @@
 import {Controller, Get, HttpCode, Body, Post} from 'routing-controllers'
-import Event from './events/entity'
+import Event from './entity'
 
 @Controller()
 export default class MainController {

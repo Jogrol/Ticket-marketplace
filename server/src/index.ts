@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import {createKoaServer} from "routing-controllers"
-import Controller from "./controller"
+import Controller from "./events/controller"
 import setupDb from './db'
 
 const port = process.env.PORT || 4000
