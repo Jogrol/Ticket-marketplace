@@ -1,19 +1,16 @@
-import React, { Component } from "react";
-import "./App.css";
-import { Provider } from "react-redux";
-import store from "./store.js";
-import { Route } from "react-router-dom"
-import {ListOfEventsContainer} from './components/ListOfEventsContainer'
+import React, { Component } from 'react';
+import store from './store'
+import {Provider} from 'react-redux'
+import { Route } from 'react-router-dom'
+import EventsListContainer from './components/EventListContainer'
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <header className="App-header">
-            <h1>UberForTickets</h1>
-          </header>
-          <Route path="/events" exact component={ListOfEventsContainer} />
+        <div>
+          <h1>UberForTickets</h1>
+          <Route path="/" exact component={EventsListContainer} />
         </div>
       </Provider>
     );
