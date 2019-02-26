@@ -24,7 +24,7 @@ console.log('send to DB', data)
 			dispatch(userSignInSuccess())
 		})
 		.catch(err => {
-			if (err.status === 400) {
+			if (err.status === 400) {console.log(err.response)
 				dispatch(userSignInFailed(err.response.body.message))
 			}
 			else {

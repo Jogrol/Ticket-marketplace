@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jsonwebtoken": "^8.5.0",
     "nodemon": "^1.18.9",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
