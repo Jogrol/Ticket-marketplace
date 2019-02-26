@@ -17,9 +17,9 @@ export const loadEvents = () => (dispatch, getState) => {
 
     // a GET /events request
     request(`${baseUrl}/events`)
-      .then(response => { console.log(response.body)
+      .then(response => {
         // dispatch an EVENTS_FETCHED action that contains the events
-        dispatch(eventsFetched(response.body.filteredEvents))
+        dispatch(eventsFetched(response.body.upCommingEvents))
       })
       .catch(console.error)
   }
