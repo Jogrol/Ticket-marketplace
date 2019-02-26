@@ -29,7 +29,6 @@ state = {
       password: '',
       password_confirmation: ''
     })
-    console.log(this.state)
     this.props.sendSignInToDB(this.state)
   }
 
@@ -40,13 +39,13 @@ state = {
 
 		return (
 			<div>
-				<h1>Sign up</h1>
+				<h1>Sign In</h1>
 
         <SignIn
-      onSubmit={this.onSubmit}
-      onChange={this.onChange}
-      values={this.state}
-      />
+          onSubmit={this.onSubmit}
+          onChange={this.onChange}
+          values={this.state}
+        />
 
 				<p style={{color:'red'}}>{ this.props.signIn.errorMessage }</p>
 			</div>
