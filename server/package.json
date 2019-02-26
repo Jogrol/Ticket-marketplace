@@ -20,6 +20,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-multer": "^1.0.2",
     "koa-router": "^7.4.0",
+    "moment": "^2.24.0",
     "nodemon": "^1.18.10",
     "pg": "^7.8.0",
     "routing-controllers": "^0.7.7",
