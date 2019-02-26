@@ -11,14 +11,15 @@ const eventsFetched = (events) => (
 })
 
 export const loadEvents = () => (dispatch, getState) => {
+
     // when the state already contains events, we don't fetch them again
     if (getState().events) return null
-  
+
     // a GET /events request
     request(`${baseUrl}/events`)
-      .then(response => { 
+      .then(response => { console.log(response.body)
         // dispatch an EVENTS_FETCHED action that contains the events
-        dispatch(eventsFetched(response.body.events))
+        dispatch(eventsFetched(response.body.filteredEvents))
       })
       .catch(console.error)
   }
