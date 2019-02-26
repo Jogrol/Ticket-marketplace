@@ -3,13 +3,15 @@ import {createKoaServer} from "routing-controllers"
 import EventsController from "./events/controller"
 import UsersController from "./users/controller"
 import LoginsController from './logins/controller'
+import TicketsController from './tickets/controller'
 import setupDb from './db'
+
 
 const port = process.env.PORT || 4000
 
 const app = createKoaServer({
    cors: true,
-   controllers: [EventsController, UsersController, LoginsController]
+   controllers: [EventsController, UsersController, LoginsController, TicketsController]
 })
 
 setupDb()
