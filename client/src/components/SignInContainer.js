@@ -45,6 +45,7 @@ state = {
           onSubmit={this.onSubmit}
           onChange={this.onChange}
           values={this.state}
+          sigIn={this.props.signIn}
         />
 
 				<p style={{color:'red'}}>{ this.props.signIn.errorMessage }</p>

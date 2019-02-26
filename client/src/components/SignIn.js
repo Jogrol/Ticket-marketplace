@@ -22,6 +22,7 @@ export default function SignIn (props) {
   					<p style={{color:'red'}}>Passwords do not match</p>
   				}
         </form>
+
         
     </div>
 
