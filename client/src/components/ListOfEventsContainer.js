@@ -37,7 +37,7 @@ class ListOfEventsContainer extends React.Component {
      const indexOfFirsEvent = indexOfLastEvent - eventsPerPage;
      const currentEvents = events.slice(indexOfFirsEvent, indexOfLastEvent);
      const pageNumbers = [];
-     console.log(currentPage)
+
      for (let i = 1; i <= Math.ceil(events.length / eventsPerPage); i++) {
        pageNumbers.push(i);
       }
