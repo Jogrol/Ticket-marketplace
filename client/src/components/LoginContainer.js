@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import {login} from '../../actions/users'
+import {login} from '../actions/users'
 import Login from './Login'
 // import {Redirect} from 'react-router-dom'
 
@@ -22,7 +22,7 @@ class LoginContainer extends React.Component {
             userName: '',
             password: ''
         })
-		console.log(this.state)
+		this.props.login(this.state)
 	}
 
 	
@@ -37,6 +37,7 @@ class LoginContainer extends React.Component {
                     onChange={this.onChange}
                     values={this.state}
                     />
+                <p style={{color:'red'}}>{ this.props.failed_login.error }</p>
                 </div>)
    
 	}
@@ -44,8 +45,8 @@ class LoginContainer extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-        state
+        failed_login: state.failed_login,
 	}
 }
 
-export default connect(mapStateToProps)(LoginContainer)
+export default connect(mapStateToProps,{login})(LoginContainer)
