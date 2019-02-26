@@ -6,11 +6,13 @@ import ListOfEventsContainer from './components/ListOfEventsContainer'
 import SignInContainer from './components/SignInContainer'
 import LoginContainer from './components/LoginContainer'
 import AddEventContainer from './components/AddEventContainer'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
+       <MuiThemeProvider>
         <div>
           <h1>UberForTickets</h1>
           <Route path="/" exact component={ListOfEventsContainer} />
@@ -18,6 +20,7 @@ class App extends Component {
           <Route patch='/' exact component={LoginContainer} />
           <Route patch='/' exact component={AddEventContainer} />
         </div>
+        </MuiThemeProvider>
       </Provider>
     );
   }
