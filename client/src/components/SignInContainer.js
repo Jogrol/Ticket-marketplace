@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import SignIn from './SignIn'
 import {sendSignInToDB} from '../actions/users'
-
+import {Redirect} from 'react-router-dom'
 
 
 class SignInContainer extends React.Component {
@@ -34,17 +34,30 @@ state = {
   }
 
   render() {
-    return (
-    <SignIn
+		if (this.props.signIn.success) return (
+			<Redirect to="/" />
+		)
+
+		return (
+			<div>
+				<h1>Sign up</h1>
+
+        <SignIn
       onSubmit={this.onSubmit}
       onChange={this.onChange}
       values={this.state}
-    />)
-  }
+      />
+
+				<p style={{color:'red'}}>{ this.props.signIn.errorMessage }</p>
+			</div>
+		)
+	}
 }
 
+
 const mapStateToProps = state => ({
-  events: state
+  events: state.events,
+  signIn: state.signIn
 })
 
 export default connect(mapStateToProps, {sendSignInToDB})(SignInContainer)
