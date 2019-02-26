@@ -5,24 +5,28 @@ import ListOfEvents from './ListOfEvents'
 
 
 class ListOfEventsContainer extends React.Component {
-
-  state = {
-    currentPage: 1,
-    eventsPerPage: 9
-
+  constructor() {
+    super()
+    this.state = {
+      currentPage: 1,
+      eventsPerPage: 9
+    }
   }
-
-  nextPage(event) {
-    console.log(event.target.id)
+  
+  nextPage = () => {
     this.setState({
-      currentPage: Number(event.target.id)
+      currentPage: this.state.currentPage + 1
+    });
+  }
+  goBack = () => {
+    this.setState({
+      currentPage: this.state.currentPage - 1
     });
   }
   
- componentDidMount() {
+ componentDidMount =() => {
     this.props.loadEvents()
   }
-
 
   render() {
       if (!this.props.events) return "loading..."
@@ -32,13 +36,16 @@ class ListOfEventsContainer extends React.Component {
      const indexOfLastEvent = currentPage * eventsPerPage;
      const indexOfFirsEvent = indexOfLastEvent - eventsPerPage;
      const currentEvents = events.slice(indexOfFirsEvent, indexOfLastEvent);
-     
      const pageNumbers = [];
+     console.log(currentPage)
      for (let i = 1; i <= Math.ceil(events.length / eventsPerPage); i++) {
        pageNumbers.push(i);
       }
 
-     return <ListOfEvents events={currentEvents} pagenumber={pageNumbers} nextPage={this.nextPage} />
+     return (<ListOfEvents events={currentEvents} 
+              pagenumber={pageNumbers} 
+              goBack={this.goBack }
+              nextPage={this.nextPage} />)
      
    
   }
