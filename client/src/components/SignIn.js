@@ -11,10 +11,19 @@ export default function SignIn (props) {
             <input type ='email' name='email'value={props.values.email} onChange={props.onChange}></input>
             <br/>
             <label>Password: </label>
-            <textarea type='password' name='password' value={props.values.password} onChange={props.onChange}></textarea>
+            <input type='password' name='password' value={props.values.password} onChange={props.onChange}></input>
             <br/>
+            <label>Password confirmation: </label>
+            <input type='password_confirmation' name='password_confirmation' value={props.values.password_confirmation} onChange={props.onChange}></input>
             <button type="submit">Submit</button>
+            {
+  					props.values.password &&
+  					props.values.password_confirmation &&
+  					props.values.password !== props.values.password_confirmation &&
+  					<p style={{color:'red'}}>Passwords do not match</p>
+  				}
         </form>
+        
     </div>
 
     )

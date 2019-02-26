@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import SignIn from './SignIn'
+import {sendSignInToDB} from '../actions/users'
 
 
 
@@ -9,7 +10,8 @@ class SignInContainer extends React.Component {
 state = {
     userName: '',
     email: '',
-    password: ''
+    password: '',
+    password_confirmation: ''
   }
 
 
@@ -24,9 +26,11 @@ state = {
     this.setState({
       userName: '',
       email: '',
-      password: ''
+      password: '',
+      password_confirmation: ''
     })
     console.log(this.state)
+    this.props.sendSignInToDB(this.state)
   }
 
   render() {
@@ -43,4 +47,4 @@ const mapStateToProps = state => ({
   events: state
 })
 
-export default connect(mapStateToProps, {})(SignInContainer)
+export default connect(mapStateToProps, {sendSignInToDB})(SignInContainer)
