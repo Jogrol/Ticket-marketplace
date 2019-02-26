@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 import ListOfEventsContainer from './components/ListOfEventsContainer'
 import SignInContainer from './components/SignInContainer'
 import LoginContainer from './components/LoginContainer'
+import AddEventContainer from './components/AddEventContainer'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route path="/" exact component={ListOfEventsContainer} />
           <Route path='/' exact component={SignInContainer} />
           <Route patch='/' exact component={LoginContainer} />
+          <Route patch='/' exact component={AddEventContainer} />
         </div>
       </Provider>
     );

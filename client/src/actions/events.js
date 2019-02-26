@@ -23,3 +23,15 @@ export const loadEvents = () => (dispatch, getState) => {
       })
       .catch(console.error)
   }
+
+  
+  export const addEventToDB = (data) => dispatch => {
+    console.log(data)
+    request
+      .post(`${baseUrl}/events`)
+      .send(data)
+      .then(response => {
+        // dispatch(eventCreateSuccess(response.body))
+      })
+      .catch(console.error)
+  }
