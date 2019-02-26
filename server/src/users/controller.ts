@@ -1,4 +1,4 @@
-import {JsonController, Get,Put,Body,Param,NotFoundError,Post, HttpCode} from "routing-controllers";
+import {JsonController, Get,Body,Post} from "routing-controllers";
 import User from "./entity";
 
 @JsonController()
@@ -10,26 +10,13 @@ export default class UserController {
         return {users}
     }
 
-    @Get("/users/:id")
-    getUser(@Param("id") id: number) {
-        return User.findOne(id);
+    @Post('/users')
+      async createUser(
+        @Body() user: User
+      ) {
+        const {password, ...rest} = user
+        const entity = User.create(rest)
+        await entity.setPassword(password)
+        return entity.save()
       }
-
-    @Put("/user/:id")
-      async updateUser(@Param("id") id: number, @Body() update: Partial<User>) {
-        const user = await User.findOne(id);
-        if (!user) throw new NotFoundError("Cannot find page");
-    
-        return User.merge(user, update).save();
-      }
-
-      @Post("/users")
-      @HttpCode(201)
-      createPage(@Body() User: User) {
-        return User.save();
-      }
-
-  
-
-
 }
