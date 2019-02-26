@@ -3,11 +3,16 @@ import request from 'superagent'
 const baseUrl = 'http://localhost:4000'
 
 export const EVENTS_FETCHED = "EVENTS_FETCHED"
-
+export const ADD_EVENT_SUCCES = "ADD_EVENT_SUCCES"
 
 const eventsFetched = (events) => (
     { type: EVENTS_FETCHED,
     events
+})
+
+const addEventSucces = (event) => ({
+  type: ADD_EVENT_SUCCES,
+  event
 })
 
 export const loadEvents = () => (dispatch, getState) => {
@@ -31,7 +36,7 @@ export const loadEvents = () => (dispatch, getState) => {
       .post(`${baseUrl}/events`)
       .send(data)
       .then(response => {
-        // dispatch(eventCreateSuccess(response.body))
+        dispatch(addEventSucces(response.body))
       })
       .catch(console.error)
   }
