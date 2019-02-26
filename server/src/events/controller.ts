@@ -9,9 +9,8 @@ export default class MainController {
     async allEvents() {
         const events = await Event.find();
         const today = moment().format('L');
-        const filteredEvents = await events.filter(event =>  moment(event.end_date).format('L') > today)
-        console.log(filteredEvents)
-        return { filteredEvents };
+        const upCommingEvents = await events.filter(event =>  moment(event.end_date).format('L') > today)
+        return { upCommingEvents };
 
     }
     @Post("/events")
