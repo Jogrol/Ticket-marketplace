@@ -1,10 +1,13 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import Typography from '@material-ui/core/Typography';
 
 export default function ListOfEvents (props) {
 
   return(<div>
-          <h1>Events</h1>
+             <Typography component="h2" variant="h2" gutterBottom>
+              Events
+            </Typography>
           <ol>
             {props.events.map((event) => 
             <li key={event.id}><Link to = {`/event/${event.id}`}>

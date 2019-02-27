@@ -31,7 +31,6 @@ class LoginContainer extends React.Component {
     
 		return (
             <div>
-                <h1>Log in</h1>
                 <Login
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}

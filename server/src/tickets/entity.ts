@@ -16,8 +16,8 @@ export default class Ticket extends BaseEntity {
   description: string
   @Column('text', {nullable:false})
   price: number
-  @ManyToOne(() => Event, (event) => event.tickets)
+  @ManyToOne(() => Event, (event) => event.tickets,{ nullable: false })
   event: Event
-  @ManyToOne(() => User, (user) => user.tickets)
+  @ManyToOne(() => User, (user) => user.tickets, { nullable: false })
   user: User
 }

@@ -39,8 +39,6 @@ state = {
 
 		return (
 			<div>
-				<h1>Sign In</h1>
-
         <SignIn
           onSubmit={this.onSubmit}
           onChange={this.onChange}

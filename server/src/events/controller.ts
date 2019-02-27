@@ -16,6 +16,7 @@ export default class EventsController {
     @Post("/events")
     @HttpCode(201)
     createPage(@Body() event: Event) {
+      console.log(Event)
       return event.save();
     }
 

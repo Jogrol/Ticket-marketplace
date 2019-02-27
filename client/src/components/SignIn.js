@@ -1,7 +1,11 @@
 import * as React from 'react'
+import Typography from '@material-ui/core/Typography';
 
 export default function SignIn (props) {
     return(<div>
+            <Typography component="h2" variant="h2" gutterBottom>
+              Sign in
+            </Typography>
         <form onSubmit={props.onSubmit} >
             <label >Username: </label>
             <input type ='text' name="userName" value={props.values.userName} onChange={props.onChange}></input>

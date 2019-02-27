@@ -1,5 +1,7 @@
-import {Controller, Get, Post, HttpCode, Body, Param} from 'routing-controllers'
+import {Controller, Get, Param, Post, HttpCode, Body} from 'routing-controllers'
 import Ticket from './entity'
+// import User from '../users/entity'
+// import Event from '../events/entity'
 
 @Controller()
 export default class TicketsController {
@@ -18,8 +20,24 @@ export default class TicketsController {
 
     @Post("/ticket")
     @HttpCode(201)
-    createPage(@Body() ticket: Ticket) {
+    createTicket(@Body() ticket: Ticket) { 
+      console.log(ticket.event)
       return ticket.save();
     }
 
-}
+    // @Post('/ticket')
+    // @HttpCode(201)
+    // async createTicket(
+    //   @CurrentUser() user: User, event: Event
+    // ) {
+    //   console.log('User', user)
+    //   console.log('Event', event)
+    //   // const entity = await Ticket.create().save()
+  
+    //   return Ticket.create({
+    //     user,
+    //     event
+    //   }).save()
+
+
+  }

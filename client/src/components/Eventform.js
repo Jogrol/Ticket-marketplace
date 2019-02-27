@@ -1,15 +1,17 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import classNames from 'classnames';
-// import { withStyles } from '@material-ui/core/styles';
-// import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 
 
 export default function EventForm (props) {
+
     return(<div>
-        <h1>Add Event</h1>
+          <Typography component="h2" variant="h2" gutterBottom>
+                Add Event
+            </Typography>
         <form onSubmit={props.onSubmit} >
             <TextField
                 id="outlined-with-placeholder"
@@ -68,7 +70,9 @@ export default function EventForm (props) {
                 variant="outlined"
             />
             <br/>
-            <button type="submit">Submit</button>
+            <Button type="submit" variant="contained">
+            Submit
+            </Button>
         </form>
     </div>
     )
