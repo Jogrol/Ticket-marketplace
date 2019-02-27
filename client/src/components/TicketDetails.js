@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 
 export default function TicketDetails(props) {
     
-    console.log(props.ticket.name)
+    console.log(props.ticket)
     return(
       
         <div> 

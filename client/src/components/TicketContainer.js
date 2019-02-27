@@ -11,7 +11,6 @@ class TicketContainer extends React.Component {
   
     render() {
     if (!this.props) return "loading..."
-        console.log(this.props.ticket)
       return (
           <div>
             <TicketDetails ticket={this.props.ticket}/>

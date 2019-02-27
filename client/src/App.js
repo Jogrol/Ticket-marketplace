@@ -8,8 +8,11 @@ import LoginContainer from './components/LoginContainer'
 import AddEventContainer from './components/AddEventContainer'
 import EventDetailsContainer from './components/EventDetailsCotainer'
 import TicketContainer from './components/TicketContainer'
+import AddTicketContainer from './components/AddTicketContainer'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom'
+
 
 class App extends Component {
   render() {
@@ -26,6 +29,20 @@ class App extends Component {
           <Route path='/add-event' exact component={AddEventContainer} />
           <Route path="/event/:id" exact component={EventDetailsContainer} />
           <Route path="/event/:id/ticket/:id" exact component={TicketContainer} />
+          <Route path="/add-ticket" exact component={AddTicketContainer} />
+        </div>
+        <div>
+            <h3>Navbar</h3>
+            <Link to = {"/events"}>All events</Link>
+            <br/>
+            <Link to = {"/sigin"}>Signin</Link>
+            <br/>
+            <Link to = {"/login"}>login</Link>
+            <br/>
+            <Link to = {"/add-event"}>add-event</Link>
+            <br/>
+            <Link to = {"/add-ticket"}>add-ticket</Link>
+            <br/>
         </div>
         </MuiThemeProvider>
       </Provider>
