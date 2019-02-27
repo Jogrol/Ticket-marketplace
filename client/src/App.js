@@ -6,6 +6,7 @@ import ListOfEventsContainer from './components/ListOfEventsContainer'
 import SignInContainer from './components/SignInContainer'
 import LoginContainer from './components/LoginContainer'
 import AddEventContainer from './components/AddEventContainer'
+import EventDetailsContainer from './components/EventDetailsCotainer'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Typography from '@material-ui/core/Typography';
 
@@ -22,6 +23,7 @@ class App extends Component {
           <Route path="/" exact component={SignInContainer} />
           <Route patch="/" exact component={LoginContainer} />
           <Route patch='/' exact component={AddEventContainer} />
+          <Route path="/events/:id" component={EventDetailsContainer} />
         </div>
         </MuiThemeProvider>
       </Provider>
