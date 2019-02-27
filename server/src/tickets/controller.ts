@@ -1,9 +1,8 @@
-import {Controller, Get, Param, Post, HttpCode, Body} from 'routing-controllers'
+import { Get, Param, Post, HttpCode, Body,} from 'routing-controllers'
 import Ticket from './entity'
-// import User from '../users/entity'
-// import Event from '../events/entity'
 
-@Controller()
+
+
 export default class TicketsController {
 
     @Get('/tickets')
@@ -14,7 +13,8 @@ export default class TicketsController {
     }
     
     @Get("/ticket/:id")
-    getAd(@Param("id") id: number) {
+    getTicketByEvent(@Param("id") id: number) {
+      console.log(id)
       return Ticket.findOne(id);
     }
 
@@ -24,6 +24,8 @@ export default class TicketsController {
       console.log(ticket.event)
       return ticket.save();
     }
+
+
 
     // @Post('/ticket')
     // @HttpCode(201)

@@ -1,6 +1,7 @@
-import {Controller, Get, Post, HttpCode, Body} from 'routing-controllers'
+import {Controller, Get, Post, HttpCode, Body, Param} from 'routing-controllers'
 import Event from './entity'
 import * as moment from 'moment'
+
 
 @Controller()
 export default class EventsController {
@@ -13,11 +14,16 @@ export default class EventsController {
         return { upCommingEvents };
 
     }
+
     @Post("/events")
     @HttpCode(201)
     createPage(@Body() event: Event) {
-      console.log(Event)
+      console.log(event)
       return event.save();
     }
 
-}
+    @Get('/event/:id')
+    getEventbyId(@Param('id') id: number) {
+      return Event.findOne(id);
+    }
+    }

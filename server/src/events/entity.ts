@@ -17,7 +17,7 @@ export default class Event extends BaseEntity {
   start_date: Date
   @Column('text', {nullable:false})
   end_date: Date
-  @OneToMany(() => Ticket, (ticket) => ticket.event)
+  @OneToMany(() => Ticket, (ticket) => ticket.event, {eager: true})
   tickets: Ticket[];
 
 }
