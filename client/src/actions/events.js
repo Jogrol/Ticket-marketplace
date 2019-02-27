@@ -4,6 +4,7 @@ const baseUrl = 'http://localhost:4000'
 
 export const EVENTS_FETCHED = "EVENTS_FETCHED"
 export const ADD_EVENT_SUCCES = "ADD_EVENT_SUCCES"
+export const EVENT_FETCHED = "EVENT_FETCHED"
 
 const eventsFetched = (events) => (
     { type: EVENTS_FETCHED,
@@ -12,6 +13,11 @@ const eventsFetched = (events) => (
 
 const addEventSucces = (event) => ({
   type: ADD_EVENT_SUCCES,
+  event
+})
+
+const eventFetched = event => ({
+  type: EVENT_FETCHED,
   event
 })
 
@@ -31,7 +37,6 @@ export const loadEvents = () => (dispatch, getState) => {
 
   
   export const addEventToDB = (data) => dispatch => {
-    console.log(data)
     request
       .post(`${baseUrl}/events`)
       .send(data)
@@ -40,3 +45,13 @@ export const loadEvents = () => (dispatch, getState) => {
       })
       .catch(console.error)
   }
+
+
+  export const loadEvent = (id) => dispatch => {
+    request
+    .get(`${baseUrl}/event/${id}`)
+        .then(response => { 
+            dispatch(eventFetched(response.body)
+        )})
+    .catch(console.error)
+    }

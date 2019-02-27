@@ -18,12 +18,12 @@ export default class EventsController {
     @Post("/events")
     @HttpCode(201)
     createPage(@Body() event: Event) {
-      console.log(event)
       return event.save();
     }
 
     @Get('/event/:id')
     getEventbyId(@Param('id') id: number) {
+      console.log(id)
       return Event.findOne(id);
     }
     }

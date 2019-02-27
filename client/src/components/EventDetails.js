@@ -1,23 +1,21 @@
 import * as React from 'react'
+// import { Link } from 'react-router-dom'
 // import EventForm from './EventForm'
 import Typography from '@material-ui/core/Typography';
 export default function EventDetails(props) {
     
+
     return(
+      
         <div> 
             <Typography component="h2" variant="h2" gutterBottom>
              Event details
             </Typography>
-            <Typography component="h2" variant="h2" gutterBottom>
-             {props.event.name}}
-            </Typography>
-            {/* <h1>{props.event.name}</h1>
-            <i>{props.event.date}</i>
-            <p>{props.event.description}</p> */}
+            <Typography component="h3" variant="h3" gutterBottom>
+             Name: {props.event.name}
+             </Typography>
         </div>
-
-
-        
     )
+    
 }
 
