@@ -25,6 +25,7 @@ class EventDetailsContainer extends React.Component {
             />
         <Tickets 
             tickets={this.props.event.tickets}
+            eventId={this.props.event.id}
             />
      </div>
     )

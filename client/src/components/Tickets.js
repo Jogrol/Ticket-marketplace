@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
+
 export default function Tickets (props) {
     
     
@@ -11,8 +12,8 @@ export default function Tickets (props) {
         <div> 
             <ol>
            {props.tickets.map((ticket) => 
-           <li key={ticket.id}><Link to = {`/event/${ticket.event}/ticket/${ticket.id}`}></Link>
-           Name: {ticket.name}
+           <li key={ticket.id}><Link to = {`/event/${props.eventId}/ticket/${ticket.id}`}>
+           Name: {ticket.name}</Link>
            </li>)}
            </ol>
         </div>
