@@ -7,21 +7,17 @@ import Tickets from './Tickets'
 
 class EventDetailsContainer extends React.Component {
 
-  state = { editMode: false }
-
   componentDidMount() {
     this.props.loadEvent(Number(this.props.match.params.id))
   }
 
   render() {
    
-    if (!this.props.event.ticket === undefined) return "loading..."
+    if (!this.props.event === undefined) return "loading..."
     return (
         <div>
         <EventDetails
             event={this.props.event}
-            formValues={this.state.formValues}
-            editMode={this.state.editMode}
             />
         <Tickets 
             tickets={this.props.event.tickets}

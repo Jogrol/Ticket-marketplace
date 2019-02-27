@@ -1,11 +1,11 @@
-import { Get, Param, Post, HttpCode, Body,} from 'routing-controllers'
+import {JsonController, Get, Param, Post, HttpCode, Body,} from 'routing-controllers'
 import Ticket from './entity'
 
-
+@JsonController()
 
 export default class TicketsController {
 
-    @Get('/tickets')
+    @Get("/tickets")
     async allEvents() {
         const tickets = await Ticket.find();
         console.log(tickets)
@@ -17,9 +17,9 @@ export default class TicketsController {
       return Ticket.findOne(id);
     }
 
-    @Post("/ticket")
+    @Post("/tickets")
     @HttpCode(201)
-    createTicket(@Body() ticket: Ticket) { 
+    createTicket(@Body() ticket: Ticket) {
       return ticket.save();
     }
  }

@@ -18,6 +18,8 @@ export default class Event extends BaseEntity {
   @Column('text', {nullable:false})
   end_date: Date
   @OneToMany(() => Ticket, (ticket) => ticket.event, {eager: true})
+  // @OneToMany(() => Ticket, (ticket) => ticket.event)
   tickets: Ticket[];
 
 }
+
