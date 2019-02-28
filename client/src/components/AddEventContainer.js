@@ -21,6 +21,9 @@ class AddEventCotainer extends React.Component {
   }
 
   onSubmit = (event) => {
+    if (this.props.currentUser === null) {
+      alert("To add an event you need to login first")}
+    else {
     event.preventDefault()
     this.setState({
         name: '',
@@ -32,6 +35,7 @@ class AddEventCotainer extends React.Component {
     })
     this.props.addEventToDB(this.state)
   }
+  }
 
   render() {
     return (
@@ -42,5 +46,9 @@ class AddEventCotainer extends React.Component {
     />)
   }
 }
+const mapStateToProps = state => (
+  {
+    currentUser: state.currentUser
+  })
 
-export default connect(null, {addEventToDB})(AddEventCotainer)
+export default connect(mapStateToProps, {addEventToDB})(AddEventCotainer)

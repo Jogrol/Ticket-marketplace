@@ -12,19 +12,25 @@ class TicketContainer extends React.Component {
     }
     
     onEdit = () => {
-        // intialize editing mode:
-        // set the starting value of the fields to the event details
-        this.setState({
-          editMode: true,
-          formValues: {
-            name: this.props.ticket.name,
-            description: this.props.ticket.description,
-            image: this.props.ticket.image,
-            price: this.props.ticket.price,
-            event: this.props.ticket.event
-          }
-        })
-      }
+        if (this.props.currentUser === null) {
+            alert("You need to login first")
+        } else if (this.props.currentUser.user.id !== this.props.ticket.user) {
+            alert("You are not author of this ticket")
+        } else {
+                // intialize editing mode:
+                // set the starting value of the fields to the event details
+            this.setState({
+                editMode: true,
+                formValues: {
+                  name: this.props.ticket.name,
+                  description: this.props.ticket.description,
+                  image: this.props.ticket.image,
+                  price: this.props.ticket.price,
+                  event: this.props.ticket.event
+                }
+              })}
+            }
+
     onChange = (event) => {
         // update the formValues property with the new data from the input field
         this.setState({
@@ -42,6 +48,8 @@ class TicketContainer extends React.Component {
         })
         this.props.updateTicket(this.props.ticket.id, this.state.formValues)
       }
+    
+
 
     render() {
     if (!this.props) return "loading..."
@@ -63,7 +71,8 @@ class TicketContainer extends React.Component {
   
   const mapStateToProps = state => (
   {
-    ticket: state.ticket
+    ticket: state.ticket,
+    currentUser: state.currentUser
   })
   
   export default connect(mapStateToProps, {updateTicket, loadTicket})(TicketContainer)

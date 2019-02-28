@@ -25,7 +25,7 @@ const updateTicketSucces = (ticket) => ({
 
 export const loadTicket = (id) => dispatch => {
     request
-    .get(`${baseUrl}/ticket/${id}`)
+    .get(`${baseUrl}/tickets/${id}`)
         .then(response => {
             dispatch(ticketFetched(response.body)
         )})
@@ -63,7 +63,7 @@ export const updateTicket = (id, data) => (dispatch) => {
         // user: store.getState().currentUser.user.id
     }
         request
-          .patch(`${baseUrl}/tickets/${id}`)
+          .put(`${baseUrl}/tickets/${id}`)
           .send(updateData)
           .then(response => {
             dispatch(updateTicketSucces(response.body))

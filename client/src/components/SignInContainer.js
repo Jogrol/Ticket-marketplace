@@ -36,7 +36,7 @@ state = {
 		if (this.props.signIn.success) return (
 			<Redirect to="/" />
 		)
-    console.log(store.getState().currentUser.user.id)
+
 		return (
       
 			<div>

@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import EventDetails from './EventDetails'
 import {loadEvent} from '../actions/events'
 import Tickets from './Tickets'
-// import {loadEvent, updateEvent, deleteEvent} from '../actions/events'
 
 class EventDetailsContainer extends React.Component {
 

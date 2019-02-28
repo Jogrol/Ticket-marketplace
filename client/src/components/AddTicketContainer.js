@@ -22,16 +22,19 @@ class AddTicketContainer extends React.Component {
   }
   
   onSubmit = (event) => {
+    if (this.props.currentUser === null) {
+      alert("To add a ticket you need to login first")}
+    else {
     event.preventDefault()
     this.setState({
         name: '',
-        image: 'gg',
+        image: '',
         description: '',
         price: '',
         event: '',
-        user: 1,
+        user: '',
     })
-    this.props.addTicketToDB(this.state)
+    this.props.addTicketToDB(this.state)}
   }
 
   render() {
@@ -46,4 +49,10 @@ class AddTicketContainer extends React.Component {
   
 }
 
-export default connect(null, {addTicketToDB})(AddTicketContainer)
+const mapStateToProps = state => (
+  {
+    currentUser: state.currentUser
+  })
+
+
+export default connect(mapStateToProps, {addTicketToDB})(AddTicketContainer)

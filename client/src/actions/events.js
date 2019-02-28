@@ -48,7 +48,6 @@ export const loadEvents = () => (dispatch, getState) => {
 
 
   export const loadEvent = (id) => dispatch => {
-    console.log(id)
     request
     .get(`${baseUrl}/event/${id}`)
         .then(response => { 

@@ -11,14 +11,15 @@ export default class TicketsController {
         return { tickets };
     }
     
-    @Get("/ticket/:id")
+    @Get("/tickets/:id")
     getTicket(@Param("id") id: number) {
       return Ticket.findOne(id);
     }
 
-    @Put("/ticket/:id")
+    @Put("/tickets/:id")
     async updateTicket(@Param("id") id: number, @Body() update: Partial<Ticket>) {
     const ticket = await Ticket.findOne(id);
+    console.log(ticket)
     if (!ticket) throw new NotFoundError("Cannot find ticket");
     return Ticket.merge(ticket, update).save();
   }
