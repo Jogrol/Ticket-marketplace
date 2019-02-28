@@ -46,7 +46,7 @@ export default function TicketForm (props) {
                 id="outlined-with-placeholder"
                 label="Price"
                 placeholder="Price"
-                name='image' value={props.values.price}
+                name='price' value={props.values.price}
                 onChange={props.onChange}
                 margin="normal"
                 variant="outlined"

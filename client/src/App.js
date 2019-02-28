@@ -27,9 +27,9 @@ class App extends Component {
           <Route path="/sigin" exact component={SignInContainer} />
           <Route path="/login" exact component={LoginContainer} />
           <Route path='/add-event' exact component={AddEventContainer} />
-          <Route path="/event/:id" exact component={EventDetailsContainer} />
-          <Route path="/event/:id/ticket/:id" exact component={TicketContainer} />
-          <Route path="/add-ticket" exact component={AddTicketContainer} />
+          <Route path="/events/:id" exact component={EventDetailsContainer} />
+          <Route path="/events/:id/ticket/:id" exact component={TicketContainer} />
+          <Route path="/events/:id/add-ticket" exact component={AddTicketContainer} />
         </div>
         <div>
             <h3>Navbar</h3>
@@ -41,7 +41,7 @@ class App extends Component {
             <br/>
             <Link to = {"/add-event"}>add-event</Link>
             <br/>
-            <Link to = {"/add-ticket"}>add-ticket</Link>
+            <Link to = {"/events/1/add-ticket"}>add-ticket</Link>
             <br/>
         </div>
         </MuiThemeProvider>

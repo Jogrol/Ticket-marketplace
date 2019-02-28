@@ -26,7 +26,7 @@ export default class User extends BaseEntity {
   @Exclude({ toPlainOnly: true })
   password: string;
   
-  @OneToMany(() => Ticket, (ticket) => ticket.user, {eager: true})
+  @OneToMany(() => Ticket, (ticket) => ticket.user)
   tickets: Ticket[]
 
   async setPassword(rawPassword: string) {

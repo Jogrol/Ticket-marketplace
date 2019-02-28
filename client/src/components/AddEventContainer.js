@@ -10,7 +10,8 @@ class AddEventCotainer extends React.Component {
         start_date: '',
         end_date: '',
         description: '',
-        image: ''
+        image: '',
+        event: this.props.match.params.id
     }
 
   onChange = (event) => {
@@ -26,7 +27,8 @@ class AddEventCotainer extends React.Component {
         start_date: '',
         end_date: '',
         description: '',
-        image: ''
+        image: '',
+        event: this.props.match.params.id
     })
     this.props.addEventToDB(this.state)
   }

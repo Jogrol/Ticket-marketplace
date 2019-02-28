@@ -1,5 +1,8 @@
 import request from 'superagent'
+import store from '../store'
 const baseUrl = 'http://localhost:4000'
+
+
 
 export const TICKET_FETCHED = "TICKET_FETCHED"
 export const ADD_TICKET_SUCCES = "ADD_TICKET_SUCCES"
@@ -28,10 +31,20 @@ export const loadTicket = (id) => dispatch => {
 
 
 export const addTicketToDB = (data) => dispatch => {
-        console.log(data)
+    console.log(data)
+    const updateData = {
+        name: data.name,
+        description: data.description,
+        image: data.image,
+        price: data.price,
+        event: data.event,
+        user: store.getState().currentUser.user.id
+
+    }
+        console.log(updateData)
         request
-          .post(`${baseUrl}/events`)
-          .send(data)
+          .post(`${baseUrl}/tickets`)
+          .send(updateData)
           .then(response => {
             dispatch(addTicketSucces(response.body))
           })

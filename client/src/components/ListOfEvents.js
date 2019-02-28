@@ -10,7 +10,7 @@ export default function ListOfEvents (props) {
             </Typography>
           <ol>
             {props.events.map((event) => 
-            <li key={event.id}><Link to = {`/event/${event.id}`}>
+            <li key={event.id}><Link to = {`/events/${event.id}`}>
             Name: {event.name} 
             Description: {event.description} 
             Start date: {event.start_date} 

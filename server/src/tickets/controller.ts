@@ -8,7 +8,6 @@ export default class TicketsController {
     @Get("/tickets")
     async allEvents() {
         const tickets = await Ticket.find();
-        console.log(tickets)
         return { tickets };
     }
     
@@ -20,6 +19,7 @@ export default class TicketsController {
     @Post("/tickets")
     @HttpCode(201)
     createTicket(@Body() ticket: Ticket) {
+      console.log(ticket)
       return ticket.save();
     }
  }

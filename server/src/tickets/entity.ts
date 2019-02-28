@@ -18,6 +18,6 @@ export default class Ticket extends BaseEntity {
   price: number
   @ManyToOne(() => Event, (event) => event.tickets)
   event: Event
-  @ManyToOne(() => User, (user) => user.tickets)
+  @ManyToOne(() => User, (user) => user.tickets, {eager: true})
   user: User
 }

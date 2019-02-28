@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import SignIn from './SignIn'
 import {sendSignInToDB} from '../actions/users'
 import {Redirect} from 'react-router-dom'
-
+import store from '../store'
 
 class SignInContainer extends React.Component {
 
@@ -36,8 +36,9 @@ state = {
 		if (this.props.signIn.success) return (
 			<Redirect to="/" />
 		)
-
+    console.log(store.getState().currentUser.user.id)
 		return (
+      
 			<div>
         <SignIn
           onSubmit={this.onSubmit}
@@ -48,7 +49,8 @@ state = {
 
 				<p style={{color:'red'}}>{ this.props.signIn.errorMessage }</p>
 			</div>
-		)
+    )
+
 	}
 }
 
