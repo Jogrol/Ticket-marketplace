@@ -13,7 +13,7 @@ export default function Tickets (props) {
             <h2>Avalaible tickets</h2>
             <ol>
            {props.tickets.map((ticket) => 
-           <li key={ticket.id}><Link to = {`/event/${props.eventId}/ticket/${ticket.id}`}>
+           <li key={ticket.id}><Link to = {`/events/${props.eventId}/ticket/${ticket.id}`}>
            Name: {ticket.name}</Link>
            </li>)}
            </ol>
