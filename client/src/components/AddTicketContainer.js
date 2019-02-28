@@ -31,14 +31,15 @@ class AddTicketContainer extends React.Component {
         image: '',
         description: '',
         price: '',
-        event: '',
+        event: Number(this.props.match.params.id),
         user: '',
-    })
-    this.props.addTicketToDB(this.state)}
+    }
+    )
+    this.props.addTicketToDB(this.state)
+  }
   }
 
   render() {
-    console.log(Number(this.props.match.params.id))
     return (
     <TicketForm
       onSubmit={this.onSubmit}
