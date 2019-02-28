@@ -3,6 +3,7 @@ import { BaseEntity } from "typeorm/repository/BaseEntity";
 import { IsEmail, IsString, MinLength } from "class-validator";
 import { Exclude } from "class-transformer";
 import Ticket from '../tickets/entity'
+import Comment from '../comments/entity'
 import * as bcrypt from "bcrypt";
 
 @Entity()
@@ -29,6 +30,9 @@ export default class User extends BaseEntity {
   @OneToMany(() => Ticket, (ticket) => ticket.user)
   tickets: Ticket[]
 
+  @OneToMany(() => Comment, (comment) => comment.user, {eager: true})
+  comments: Comment[];
+
   async setPassword(rawPassword: string) {
     const hash = await bcrypt.hash(rawPassword, 10);
     this.password = hash;
@@ -39,4 +43,3 @@ export default class User extends BaseEntity {
   }
   
 }
-// 

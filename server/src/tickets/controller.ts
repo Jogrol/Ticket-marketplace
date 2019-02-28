@@ -19,7 +19,6 @@ export default class TicketsController {
     @Put("/tickets/:id")
     async updateTicket(@Param("id") id: number, @Body() update: Partial<Ticket>) {
     const ticket = await Ticket.findOne(id);
-    console.log(ticket)
     if (!ticket) throw new NotFoundError("Cannot find ticket");
     return Ticket.merge(ticket, update).save();
   }
@@ -27,7 +26,6 @@ export default class TicketsController {
     @Post("/tickets")
     @HttpCode(201)
     createTicket(@Body() ticket: Ticket) {
-      console.log(ticket)
       return ticket.save();
     }
     
