@@ -30,7 +30,7 @@ export default class User extends BaseEntity {
   @OneToMany(() => Ticket, (ticket) => ticket.user)
   tickets: Ticket[]
 
-  @OneToMany(() => Comment, (comment) => comment.user, {eager: true})
+  @OneToMany(() => Comment, (comment) => comment.user)
   comments: Comment[];
 
   async setPassword(rawPassword: string) {

@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {loadTicket, updateTicket} from '../actions/tickets'
 import TicketDetails from './TicketDetails'
-
+import Commments from './Comments'
 class TicketContainer extends React.Component {
 
     state = { editMode: false }
@@ -52,6 +52,7 @@ class TicketContainer extends React.Component {
 
 
     render() {
+      
     if (!this.props) return "loading..."
       return (
           <div>
@@ -64,6 +65,8 @@ class TicketContainer extends React.Component {
             formValues={this.state.formValues}
             editMode={this.state.editMode}
             />
+            <Commments
+            comments={this.props.ticket.comments}/>
        </div>
       )
       }
