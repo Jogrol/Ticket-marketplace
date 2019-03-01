@@ -1,5 +1,6 @@
 import request from 'superagent'
 import store from '../store'
+
 const baseUrl = 'http://localhost:4000'
 
 

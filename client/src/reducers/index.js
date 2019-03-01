@@ -5,6 +5,7 @@ import currentUser from './currentUser'
 import failed_login from './failed_login'
 import event from './event'
 import ticket from './ticket'
+import comments from './comments'
 
 export default combineReducers({
   currentUser,
@@ -12,5 +13,6 @@ export default combineReducers({
   event,
   signIn,
   failed_login,
-  ticket
+  ticket,
+  comments
 })

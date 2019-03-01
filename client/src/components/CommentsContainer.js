@@ -1,18 +1,20 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import {addCommentToDB} from '../actions/comments'
+import {addCommentToDB, loadComments} from '../actions/comments'
 import Commments from './Comments'
 import CommentForm from './CommentForm'
+import store from '../store';
+
 
 class CommentsCotainer extends React.Component {
   
     state = {
         comment: '',
         user: '',
-        ticket: this.props.ticket.id
+        ticket: this.props.ticketID
     }
-
-    
+  
+  
   onChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -20,7 +22,6 @@ class CommentsCotainer extends React.Component {
   }
   
   onSubmit = (event) => {
-      console.log(this.props.ticket.id)
     // if (this.props.currentUser === null) {
     //   alert("To add a comment you need to login first")}
     // else {
@@ -28,13 +29,24 @@ class CommentsCotainer extends React.Component {
     this.setState({
         comment: '',
         user: '',
-        ticket:  this.props.ticket.id
-    })
-    // this.props.addCommentToDB(this.state)
-// }
+        ticket: this.props.ticketID
+    }
+    )
+    this.props.addCommentToDB(this.state)
+    
+  // } 
+  }
+
+
+  componentDidMount = () => {
+    console.log(this.props.ticketID)
+      console.log('from CommentContainer', this.props.ticket.id)
+      this.props.loadComments(this.props.ticketID)
   }
 
   render() {
+    
+    if (!this.props.ticket.id) return null
     return (
         <div>
     <Commments
@@ -52,8 +64,8 @@ class CommentsCotainer extends React.Component {
 const mapStateToProps = state => (
   {
     ticket: state.ticket,
+    comments: state.comments,
     currentUser: state.currentUser
   })
 
-
-export default connect(mapStateToProps, {})(CommentsCotainer)
+export default connect(mapStateToProps, {loadComments, addCommentToDB})(CommentsCotainer)

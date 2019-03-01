@@ -1,6 +1,8 @@
 
+import {loadComments} from './comments'
 import request from 'superagent'
 const baseUrl = 'http://localhost:4000'
+
 
 export const EVENTS_FETCHED = "EVENTS_FETCHED"
 export const ADD_EVENT_SUCCES = "ADD_EVENT_SUCCES"
@@ -42,6 +44,7 @@ export const loadEvents = () => (dispatch, getState) => {
       .send(data)
       .then(response => {
         dispatch(addEventSucces(response.body))
+        dispatch(loadComments())
       })
       .catch(console.error)
   }

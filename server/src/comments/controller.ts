@@ -1,6 +1,6 @@
-import {JsonController, Get, Post, HttpCode, Body} from 'routing-controllers'
+import {JsonController, Get, Post, HttpCode, Body, Param} from 'routing-controllers'
 import Comment from './entity'
-
+import Ticket from '../tickets/entity'
 @JsonController()
 
 export default class CommentsController {
@@ -10,10 +10,22 @@ export default class CommentsController {
         const comments = await Comment.find();
         return { comments };
     } 
-    @Post("/comments")
+
+    @Get('/comments/:id')
+    getCommentbyId(@Param('id') id: number) {
+      return Comment.find({ where: {ticket : id}});
+    }
+    
+
+    @Post("/comments/")
     @HttpCode(201)
-    createTicket(@Body() comment: Comment) {
-      console.log(comment)
-      return comment.save();
-    }  
+    async createTicket(@Body() comment: Comment) {
+      await comment.save();
+      return Ticket.findOne(comment.ticket)
+    } 
+
+    // @Get("/tickets/:id")
+    // getTicket(@Param("id") id: number) {
+    //   return Ticket.findOne(id);
+    // }
  }

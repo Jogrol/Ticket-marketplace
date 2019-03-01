@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import SignIn from './SignIn'
 import {sendSignInToDB} from '../actions/users'
 import {Redirect} from 'react-router-dom'
-import store from '../store'
 
 class SignInContainer extends React.Component {
 

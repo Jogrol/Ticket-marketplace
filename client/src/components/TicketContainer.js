@@ -2,13 +2,17 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {loadTicket, updateTicket} from '../actions/tickets'
 import TicketDetails from './TicketDetails'
-import Commments from './Comments'
 import CommentsContainer from './CommentsContainer';
+import {loadComments} from '../actions/comments'
+
 class TicketContainer extends React.Component {
 
-    state = { editMode: false }
+    state = { 
+      editMode:false,
+      ticketId: Number(this.props.match.params.id) }
 
-    componentDidMount() {
+    componentWillMount() {
+      console.log('fromTicketContainer',Number(this.props.match.params.id))
       this.props.loadTicket(Number(this.props.match.params.id))
     }
     
@@ -47,6 +51,7 @@ class TicketContainer extends React.Component {
         this.setState({
           editMode: false
         })
+        
         this.props.updateTicket(this.props.ticket.id, this.state.formValues)
       }
     
@@ -55,6 +60,8 @@ class TicketContainer extends React.Component {
     render() {
       
     if (!this.props) return "loading..."
+
+    console.log('from ticket container to commentcontainer',this.props.match.params.id)
       return (
           <div>
             <TicketDetails 
@@ -66,8 +73,8 @@ class TicketContainer extends React.Component {
             formValues={this.state.formValues}
             editMode={this.state.editMode}
             />
-            <CommentsContainer />
-       </div>
+          <CommentsContainer ticketID={this.props.match.params.id}/>
+  		    </div>
       )
       }
   }
@@ -78,4 +85,4 @@ class TicketContainer extends React.Component {
     currentUser: state.currentUser
   })
   
-  export default connect(mapStateToProps, {updateTicket, loadTicket})(TicketContainer)
+  export default connect(mapStateToProps, {updateTicket, loadComments, loadTicket})(TicketContainer)
