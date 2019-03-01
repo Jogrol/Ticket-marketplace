@@ -1,9 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {addCommentToDB, loadComments} from '../actions/comments'
+import {addCommentToDB} from '../actions/comments'
 import Commments from './Comments'
 import CommentForm from './CommentForm'
-import store from '../store';
 
 
 class CommentsCotainer extends React.Component {
@@ -38,12 +37,6 @@ class CommentsCotainer extends React.Component {
   }
 
 
-  componentDidMount = () => {
-    console.log(this.props.ticketID)
-      console.log('from CommentContainer', this.props.ticket.id)
-      this.props.loadComments(this.props.ticketID)
-  }
-
   render() {
     
     if (!this.props.ticket.id) return null
@@ -68,4 +61,4 @@ const mapStateToProps = state => (
     currentUser: state.currentUser
   })
 
-export default connect(mapStateToProps, {loadComments, addCommentToDB})(CommentsCotainer)
+export default connect(mapStateToProps, {addCommentToDB})(CommentsCotainer)

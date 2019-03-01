@@ -22,7 +22,7 @@ const userLoginSuccess = (JWT) => ({
     payload: JWT
 })
 
-const userLogOut = () => ({
+export const userLogOut = () => ({
     type: USER_LOGOUT,
 })
 

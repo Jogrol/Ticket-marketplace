@@ -1,5 +1,3 @@
-
-import {loadComments} from './comments'
 import request from 'superagent'
 const baseUrl = 'http://localhost:4000'
 
@@ -37,18 +35,16 @@ export const loadEvents = () => (dispatch, getState) => {
       .catch(console.error)
   }
 
-  
+
   export const addEventToDB = (data) => dispatch => {
     request
       .post(`${baseUrl}/events`)
       .send(data)
       .then(response => {
         dispatch(addEventSucces(response.body))
-        dispatch(loadComments())
       })
       .catch(console.error)
   }
-
 
   export const loadEvent = (id) => dispatch => {
     request

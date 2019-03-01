@@ -6,7 +6,8 @@ import LoginsController from './logins/controller'
 import TicketsController from './tickets/controller'
 import CommentsController from './comments/controller'
 import setupDb from './db'
-
+import {Action} from 'routing-controllers';
+import { verify } from "./jwt";
 
 const port = process.env.PORT || 4000
 
@@ -19,7 +20,16 @@ const app = createKoaServer({
       LoginsController,
       TicketsController,
       CommentsController
-    ]
+    ],
+    authorizationChecker: (action: Action) => {
+      const header: string = action.request.headers.authorization
+      if (header && header.startsWith('Bearer ')) {
+          const [ , token ] = header.split(' ')
+          return !!(token && verify(token))
+        }
+        // ...
+        return false
+      }
 })
 
 setupDb()
