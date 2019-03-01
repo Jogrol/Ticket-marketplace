@@ -71,3 +71,12 @@ export const updateTicket = (id, data) => (dispatch) => {
           })
           .catch(console.error)
       }
+
+export const getAllTickets = () => (dispatch) => {
+            request
+            .get(`${baseUrl}/tickets`)
+            .then(response => {
+              console.log(response)}
+            )
+             .catch(console.error)
+          }

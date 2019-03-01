@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column , ManyToOne, OneToMany} from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column , ManyToOne, OneToMany, Timestamp} from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
 import Event from '../events/entity'
 import User from '../users/entity'
@@ -15,9 +15,11 @@ export default class Ticket extends BaseEntity {
   image: string
   @Column('text', {nullable:false})
   description: string
-  @Column('text', {nullable:false})
+  @Column('integer', {nullable:false})
   price: number
-  @ManyToOne(() => Event, (event) => event.tickets)
+  @Column('text', {nullable:false})
+  created_on: Timestamp
+  @ManyToOne(() => Event, (event) => event.tickets,)
   event: Event
   @ManyToOne(() => User, (user) => user.tickets, {eager: true})
   user: User

@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import {loadTicket, updateTicket} from '../actions/tickets'
 import TicketDetails from './TicketDetails'
 import CommentsContainer from './CommentsContainer';
-// import {loadComments} from '../actions/comments'
+import {calculateFraudRate} from '../actions/fraudCheck';
+
 
 class TicketContainer extends React.Component {
 
@@ -13,8 +14,9 @@ class TicketContainer extends React.Component {
 
     componentWillMount() {
       this.props.loadTicket(Number(this.props.match.params.id))
+      this.props.calculateFraudRate()
     }
-    
+
     onEdit = () => {
         if (this.props.currentUser === null) {
             alert("You need to login first")
@@ -54,7 +56,7 @@ class TicketContainer extends React.Component {
         this.props.updateTicket(this.props.ticket.id, this.state.formValues)
       }
     
-
+  
 
     render() {
       
@@ -83,4 +85,4 @@ class TicketContainer extends React.Component {
     currentUser: state.currentUser
   })
   
-  export default connect(mapStateToProps, {updateTicket,loadTicket})(TicketContainer)
+  export default connect(mapStateToProps, {updateTicket,calculateFraudRate,loadTicket})(TicketContainer)

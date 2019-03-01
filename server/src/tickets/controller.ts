@@ -16,12 +16,18 @@ export default class TicketsController {
       return Ticket.findOne(id);
     }
 
+    @Get("/ticket-by-userid/:id")
+    getTotalofTicketbyUser(@Param('id') id: number) {
+      return Ticket.find({ where: {user : id}});
+    }
+
+
     @Put("/tickets/:id")
     async updateTicket(@Param("id") id: number, @Body() update: Partial<Ticket>) {
     const ticket = await Ticket.findOne(id);
     if (!ticket) throw new NotFoundError("Cannot find ticket");
     return Ticket.merge(ticket, update).save();
-  }
+    }
 
     @Post("/tickets")
     @HttpCode(201)
