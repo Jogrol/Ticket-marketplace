@@ -37,7 +37,6 @@ class TicketContainer extends React.Component {
 
 
 
-
     state = { 
       editMode:false,
       ticketId: Number(this.props.match.params.id) }
@@ -45,7 +44,6 @@ class TicketContainer extends React.Component {
     componentWillMount() {
       this.props.loadEvents()
       this.props.loadTicket(Number(this.props.match.params.id))
-      // this.props.getAllTickets()
     }
 
     onEdit = () => {

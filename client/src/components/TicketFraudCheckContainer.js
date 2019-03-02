@@ -13,15 +13,11 @@ class TicketFraudCheckContainer extends React.Component {
         }
       }
 
+  
 
-
-    componentWillMount() {
-        this.props.loadTickets()
-        this.props.loadEvent()
-    }
    
     componentDidMount(){
-     
+       
     }
 
     
@@ -45,14 +41,16 @@ class TicketFraudCheckContainer extends React.Component {
             console.log('Bad test +5 commentlength is', this.props.ticket.comments )
             console.log('current score +5', score)
         }
-
-        const filterTicketsperUser = this.props.tickets.filter(ticket => ticket.user.id === this.props.ticket.user.id)
-
-        if ((filterTicketsperUser.length > 1)) {
-            score=+5
-            console.log('Bad test +5: ammount of tickets per user', filterTicketsperUser.length)
-            console.log('current score +5', score)
-        }
+        console.log('total of comments made', this.props.ticket.comments.length)
+        console.log(this.props.ticket.user.id)
+        console.log(this.props.tickets)
+        // const filterTicketsperUser = this.props.tickets.filter(ticket => ticket.user.id === this.props.ticket.user.id)
+        // console.log(filterTicketsperUser)
+        // if ((filterTicketsperUser.length > 1)) {
+        //     score=+5
+        //     console.log('Bad test +5: ammount of tickets per user', filterTicketsperUser.length)
+        //     console.log('current score +5', score)
+        // }
         const ticketsFilteredByEvent =  this.props.tickets.filter(ticket => ticket.event.id === this.props.ticket.event.id)
         const avgPricePerEvent = ticketsFilteredByEvent.reduce((prev, ticket) => prev + Number(ticket.price), 0)/ticketsFilteredByEvent.length
         console.log('average price', avgPricePerEvent)
@@ -85,9 +83,8 @@ class TicketFraudCheckContainer extends React.Component {
 
     
     render() {
-    // console.log(this.props)
-    if (this.props.tickets === null) return "loading..."
-    console.log(this.props)
+    if (!this.props.ticket.id) return "loading..."
+    console.log(this.props.ticket.id)
    
       return (
           <div>

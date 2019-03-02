@@ -7,7 +7,7 @@ import {loadTickets} from '../actions/tickets'
 
 class EventDetailsContainer extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.loadTickets()
     this.props.loadEvent(Number(this.props.match.params.id))
   }
@@ -15,7 +15,6 @@ class EventDetailsContainer extends React.Component {
   render() {
    
     if (!this.props.event === undefined) return "loading..."
-    
     return (
         <div>
         <EventDetails
@@ -23,16 +22,14 @@ class EventDetailsContainer extends React.Component {
             />
         <Tickets 
             tickets={this.props.tickets}
-            eventId={this.props.event.id}
+            eventId={this.props.match.params.id}
             />
      </div>
     )
     }
 }
 
-const mapStateToProps = state => (
-
-{
+const mapStateToProps = state => ({
   tickets: state.tickets,
   event: state.event
 })

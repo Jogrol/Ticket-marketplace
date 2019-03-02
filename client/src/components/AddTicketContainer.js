@@ -22,9 +22,9 @@ class AddTicketContainer extends React.Component {
   }
   
   onSubmit = (event) => {
-    if (this.props.currentUser === null) {
-      alert("To add a ticket you need to login first")}
-    else {
+    // if (this.props.currentUser === null) {
+    //   alert("To add a ticket you need to login first")}
+    // else {
     event.preventDefault()
     this.setState({
         name: '',
@@ -36,7 +36,7 @@ class AddTicketContainer extends React.Component {
     }
     )
     this.props.addTicketToDB(this.state)
-  }
+  // }
   }
 
   render() {
