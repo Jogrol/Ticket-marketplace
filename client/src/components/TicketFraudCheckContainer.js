@@ -21,7 +21,7 @@ class TicketFraudCheckContainer extends React.Component {
     }
    
     componentDidMount(){
-        // this.FraudChecker()
+     
     }
 
     
@@ -53,15 +53,12 @@ class TicketFraudCheckContainer extends React.Component {
             console.log('Bad test +5: ammount of tickets per user', filterTicketsperUser.length)
             console.log('current score +5', score)
         }
-        //check average Price of a ticket
         const ticketsFilteredByEvent =  this.props.tickets.filter(ticket => ticket.event.id === this.props.ticket.event.id)
         const avgPricePerEvent = ticketsFilteredByEvent.reduce((prev, ticket) => prev + Number(ticket.price), 0)/ticketsFilteredByEvent.length
         console.log('average price', avgPricePerEvent)
         console.log("own price",this.props.ticket.price)
 
         const differenceInPercentagev2 = 100/avgPricePerEvent*this.props.ticket.price-100
-        // console.log(differenceInPercentagev2-100)
-        // const priceDiffernce = this.props.ticket.price-avgPricePerEvent
         
         if (differenceInPercentagev2 < 0) {
             let addPositive = differenceInPercentagev2*-1
@@ -80,28 +77,18 @@ class TicketFraudCheckContainer extends React.Component {
             }
             
         }
-       
-        if (score < 5) {
-            this.setState({
-                riskCalc: 5
-              })
-        } else if (score > 95) {
-            this.setState({
-                riskCalc: 5
-              })
-        } else {
-            this.setState({
-                riskCalc: score
-              })
-        }
+        if (score < 5) {this.setState({riskCalc: 5})
+        } else if (score > 95) {this.setState({riskCalc: 96})
+        } else {this.setState({riskCalc: score})}
         console.log('total score', score)
     }   
 
     
     render() {
-
-    if (!this.props) return "loading..."
-
+    // console.log(this.props)
+    if (this.props.tickets === null) return "loading..."
+    console.log(this.props)
+   
       return (
           <div>
           <TicketFraudCheck score={this.state.riskCalc} fraudChecker={this.fraudChecker}/>
