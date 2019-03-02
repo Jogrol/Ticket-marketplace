@@ -5,9 +5,10 @@ const baseUrl = 'http://localhost:4000'
 
 
 
-export const TICKET_FETCHED = "TICKET_FETCHED"
+export const TICKETS_FETCHED = "TICKETS_FETCHED"
 export const ADD_TICKET_SUCCES = "ADD_TICKET_SUCCES"
 export const UPDATE_TICKET_SUCCES ="UPDATE_TICKET_SUCCES"
+export const TICKET_FETCHED = "TICKET_FETCHED"
 
 const ticketFetched = ticket => ({
     type: TICKET_FETCHED,
@@ -22,6 +23,11 @@ const addTicketSucces = (ticket) => ({
 const updateTicketSucces = (ticket) => ({
     type: UPDATE_TICKET_SUCCES,
     ticket
+})
+
+const ticketsFetched = (tickets) => (
+    { type: TICKETS_FETCHED,
+    tickets
 })
 
 export const loadTicket = (id) => dispatch => {
@@ -72,11 +78,16 @@ export const updateTicket = (id, data) => (dispatch) => {
           .catch(console.error)
       }
 
-export const getAllTickets = () => (dispatch) => {
-            request
-            .get(`${baseUrl}/tickets`)
-            .then(response => {
-              console.log(response)}
-            )
-             .catch(console.error)
-          }
+
+export const loadTickets = () => (dispatch, getState) => {
+    // when the state already contains events, we don't fetch them again
+    if (getState().tickets) return null
+
+    // a GET /events request
+    request(`${baseUrl}/tickets`)
+      .then(response => {
+        // dispatch an EVENTS_FETCHED action that contains the events
+        dispatch(ticketsFetched(response.body.tickets))
+      })
+      .catch(console.error)
+  }

@@ -17,9 +17,9 @@ export default class Ticket extends BaseEntity {
   description: string
   @Column('decimal', {nullable:false})
   price: number
-  @Column({ type: 'time', default: () => 'CURRENT_TIMESTAMP'})
+  @Column({ type: 'time with time zone', default: () => 'CURRENT_TIMESTAMP'})
   created_on: Timestamp
-  @ManyToOne(() => Event, (event) => event.tickets,)
+  @ManyToOne(() => Event, (event) => event.tickets,{eager: true})
   event: Event
   @ManyToOne(() => User, (user) => user.tickets, {eager: true})
   user: User

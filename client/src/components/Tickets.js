@@ -7,6 +7,8 @@ export default function Tickets (props) {
     
 
     if (!props.tickets) return 'loading'
+
+    
     return(
       
         <div> 

@@ -3,10 +3,12 @@ import {connect} from 'react-redux'
 import EventDetails from './EventDetails'
 import {loadEvent} from '../actions/events'
 import Tickets from './Tickets'
+import {loadTickets} from '../actions/tickets'
 
 class EventDetailsContainer extends React.Component {
 
   componentDidMount() {
+    this.props.loadTickets()
     this.props.loadEvent(Number(this.props.match.params.id))
   }
 
@@ -19,7 +21,7 @@ class EventDetailsContainer extends React.Component {
             event={this.props.event}
             />
         <Tickets 
-            tickets={this.props.event.tickets}
+            tickets={this.props.tickets}
             eventId={this.props.event.id}
             />
      </div>
@@ -28,8 +30,10 @@ class EventDetailsContainer extends React.Component {
 }
 
 const mapStateToProps = state => (
+
 {
+  tickets: state.tickets,
   event: state.event
 })
 
-export default connect(mapStateToProps, {loadEvent})(EventDetailsContainer)
+export default connect(mapStateToProps, {loadEvent, loadTickets})(EventDetailsContainer)

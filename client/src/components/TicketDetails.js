@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Typography from '@material-ui/core/Typography';
 import TicketForm from '../components/Ticketform'
-
+import TicketFraudCheckContainer from './TicketFraudCheckContainer'
 export default function TicketDetails(props) {
     return(
 
@@ -16,7 +16,7 @@ export default function TicketDetails(props) {
              Name: {props.ticket.name}
              </Typography>
              <button onClick={() => props.onEdit()}>Edit</button>
-
+            <TicketFraudCheckContainer />
              </div>}
         </div>
     )
