@@ -7,14 +7,14 @@ export default function Tickets (props) {
     
 
     if (!props.tickets) return 'loading'
-
-    
+    const filteredTicket = props.tickets.filter(ticket => ticket.event.id === props.eventId)
+        
     return(
-      
+       
         <div> 
             <h2>Avalaible tickets</h2>
             <ol>
-           {props.tickets.map((ticket) => 
+           {filteredTicket.map((ticket) => 
            <li key={ticket.id}><Link to = {`/events/${props.eventId}/ticket/${ticket.id}`}>
            Name: {ticket.name}</Link>
            </li>)}
