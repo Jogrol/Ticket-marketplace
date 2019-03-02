@@ -1,32 +1,110 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import TicketFraudCheck from './TicketFraudCheck'
-import {loadEvents} from '../actions/events'
+import {loadTickets} from '../actions/tickets'
+import {loadEvent} from '../actions/events'
 class TicketFraudCheckContainer extends React.Component {
+    
 
-    componentDidMount() {
-        
-        // this.FraudChecker()
+    constructor() {
+        super()
+        this.state = {
+          riskCalc: 5,
+        }
+      }
+
+
+
+    componentWillMount() {
+        this.props.loadTickets()
+        this.props.loadEvent()
     }
    
-
-    FraudChecker = () => {
-        if (this.props.events[0] === []) return null
-        this.props.events.map(event => console.log(event.tickets))
-        // const ticketByUser = await tickets.filter(ticket => ticket.user.id === 1)
-        // // console.log("user 1 sold tickets", ticketByUser.length)
-        // console.log(this.props.events)
+    componentDidMount(){
+        // this.FraudChecker()
     }
 
+    
+    fraudChecker = () => {
+        let score = 5
+        console.log("start score", score)
+        //Check creation hour
+        if (parseInt(this.props.ticket.created_on) > 9 && parseInt(this.props.ticket.created_on) < 18 ) {
+            score=score+10 
+                console.log('bad test +10%' , this.state.riskCalc,'created on', this.props.ticket.created_on) 
+                console.log('current score +10', score)
+              } else {
+                score=score-10 
+                console.log('good test -10% created on', this.props.ticket.created_on)
+                console.log('current score -10%', score)
+              }
 
+        //Check comment lenght:
+        if(this.props.ticket.comments.length > 2) {
+            score=score+5 
+            console.log('Bad test +5 commentlength is', this.props.ticket.comments )
+            console.log('current score +5', score)
+        }
+
+        const filterTicketsperUser = this.props.tickets.filter(ticket => ticket.user.id === this.props.ticket.user.id)
+
+        if ((filterTicketsperUser.length > 1)) {
+            score=+5
+            console.log('Bad test +5: ammount of tickets per user', filterTicketsperUser.length)
+            console.log('current score +5', score)
+        }
+        //check average Price of a ticket
+        const ticketsFilteredByEvent =  this.props.tickets.filter(ticket => ticket.event.id === this.props.ticket.event.id)
+        const avgPricePerEvent = ticketsFilteredByEvent.reduce((prev, ticket) => prev + Number(ticket.price), 0)/ticketsFilteredByEvent.length
+        console.log('average price', avgPricePerEvent)
+        console.log("own price",this.props.ticket.price)
+
+        const differenceInPercentagev2 = 100/avgPricePerEvent*this.props.ticket.price-100
+        // console.log(differenceInPercentagev2-100)
+        // const priceDiffernce = this.props.ticket.price-avgPricePerEvent
+        
+        if (differenceInPercentagev2 < 0) {
+            let addPositive = differenceInPercentagev2*-1
+            score=+addPositive
+            console.log('current score + ', differenceInPercentagev2 , ' = ' , score)
+            console.log('risk up with', differenceInPercentagev2)
+        } else {
+            if (differenceInPercentagev2 > 10){
+                score=-10
+                console.log('current score -10', score)
+                console.log('risk goes down with 10')
+            } else {
+                score=-differenceInPercentagev2
+                console.log('current score', score)
+                console.log('risk goes down with', differenceInPercentagev2)
+            }
+            
+        }
+       
+        if (score < 5) {
+            this.setState({
+                riskCalc: 5
+              })
+        } else if (score > 95) {
+            this.setState({
+                riskCalc: 5
+              })
+        } else {
+            this.setState({
+                riskCalc: score
+              })
+        }
+        console.log('total score', score)
+    }   
+
+    
     render() {
-    console.log('avalaible props', this.props)
 
     if (!this.props) return "loading..."
 
       return (
           <div>
-          <TicketFraudCheck/>
+          <TicketFraudCheck score={this.state.riskCalc} fraudChecker={this.fraudChecker}/>
   		 </div>
       )
       }
@@ -34,9 +112,9 @@ class TicketFraudCheckContainer extends React.Component {
   
   const mapStateToProps = state => (
   {
-    events: state.event,
     ticket: state.ticket,
-    currentUser: state.currentUser
+    tickets: state.tickets,
+    event: state.event
   })
   
-  export default connect(mapStateToProps, {loadEvents})(TicketFraudCheckContainer)
+  export default connect(mapStateToProps, {loadEvent, loadTickets})(TicketFraudCheckContainer)

@@ -15,6 +15,7 @@ class EventDetailsContainer extends React.Component {
   render() {
    
     if (!this.props.event === undefined) return "loading..."
+    
     return (
         <div>
         <EventDetails
