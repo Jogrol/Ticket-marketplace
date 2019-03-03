@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import AddEventContainer from './AddEventContainer';
 
 
 const styles = {
@@ -53,9 +54,7 @@ function ListOfEvents (props) {
               <Button  onClick={() => props.goBack()}>Back</Button>
               <Button  onClick={() => props.nextPage()}>Next</Button>
               <br/>
-              <Link to = {`/events/add-event/`}><Button>
-                    Add event
-                  </Button></Link>
+              <AddEventContainer />
               </div> )
     
 }

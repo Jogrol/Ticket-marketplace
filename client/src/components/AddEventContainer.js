@@ -11,7 +11,6 @@ class AddEventCotainer extends React.Component {
         end_date: '',
         description: '',
         image: '',
-        event: this.props.match.params.id
     }
 
   onChange = (event) => {

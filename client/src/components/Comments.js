@@ -26,7 +26,16 @@ function Comments (props) {
    
     const { classes } = props;
     
-    if (!props.comments) return  <div><h2>Comments</h2> <p>No comments</p></div>
+    if (props.comments.length === 0) return  (
+            <div> 
+            <Typography component="h5" variant="h5" gutterBottom>
+            Comments
+            </Typography>
+            <Card> <CardContent><Typography component="p">
+                            No comments
+                        </Typography></CardContent></Card>
+             
+            </div>)
 
     return(
         <div> 

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import TicketFraudCheck from './TicketFraudCheck'
 import {loadTickets} from '../actions/tickets'
 import {loadEvent} from '../actions/events'
+
 class TicketFraudCheckContainer extends React.Component {
     
 
@@ -17,7 +18,7 @@ class TicketFraudCheckContainer extends React.Component {
 
    
     componentWillMount(){
-      if(this.props.tickets) {
+      if(this.props.tickets && this.props.ticket) {
         this.fraudChecker()
       }
     }

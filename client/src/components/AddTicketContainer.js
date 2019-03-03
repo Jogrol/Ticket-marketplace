@@ -10,7 +10,7 @@ class AddTicketContainer extends React.Component {
         image: '',
         description: '',
         price: '',
-        event: Number(this.props.match.params.id),
+        event: Number(this.props.event.id),
         user: ''
     }
 
@@ -52,6 +52,7 @@ class AddTicketContainer extends React.Component {
 
 const mapStateToProps = state => (
   {
+    event: state.event,
     currentUser: state.currentUser
   })
 

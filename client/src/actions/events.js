@@ -1,4 +1,5 @@
 import request from 'superagent'
+import store from '../store'
 const baseUrl = 'http://localhost:4000'
 
 
@@ -47,6 +48,7 @@ export const loadEvents = () => (dispatch, getState) => {
   }
 
   export const loadEvent = (id) => dispatch => {
+    // if (store.getState().event.id) return null
     request
     .get(`${baseUrl}/event/${id}`)
         .then(response => { 

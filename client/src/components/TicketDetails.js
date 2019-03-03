@@ -35,14 +35,18 @@ function TicketDetails(props) {
                     {props.ticket.name}
                   </Typography>
                   <Typography component="p">
+                  Price:{props.ticket.price}
+                  <br />
                   {props.ticket.description}
                   </Typography>
+                  <TicketFraudCheckContainer />
                   </CardContent>
                   <CardMedia
                   className={classes.media}
                   image={props.ticket.image}
                   title="image ticket"
                   />
+
                 <Button onClick={() => props.onEdit()}>Edit</Button>
             <TicketFraudCheckContainer />
         </Card>
@@ -58,16 +62,22 @@ function TicketDetails(props) {
                     {props.ticket.name}
                   </Typography>
                   <Typography component="p">
+                  Price: € {props.ticket.price}
+                  </Typography>
+                  <Typography component="p">
                   {props.ticket.description}
                   </Typography>
+                  <br/>
+                  <TicketFraudCheckContainer />
                   </CardContent>
                   <CardMedia
                   className={classes.media}
                   image={props.ticket.image}
                   title="image ticket"
                   />
+                <CardContent>
                 <Button onClick={() => props.onEdit()}>Edit</Button>
-            <TicketFraudCheckContainer />
+                </CardContent>
         </Card>
          </div>}
     </div>

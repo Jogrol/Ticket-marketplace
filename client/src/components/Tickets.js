@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
+import AddTicketContainer from '../components/AddTicketContainer'
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
@@ -17,12 +18,23 @@ const styles = theme => ({
 
 function Tickets (props) {
     
-    if (!props.tickets) return  (<Typography component="h4" variant="h4" gutterBottom>
-    No tickets avalaible
-    </Typography>)
+    if (!props.tickets) return  (<div></div>)
 
     let filteredTicket = props.tickets.filter(ticket => ticket.event.id == props.eventId)
 
+    if (filteredTicket.length ===0) return  (
+        <div>
+        <Typography component="h3" variant="h3" gutterBottom>
+        Avalaible tickets
+        </Typography>
+        <List>
+        <ListItem>
+        <ListItemText>No tickets avalaible</ListItemText>
+        </ListItem>
+        </List>
+        </div>)
+    
+    
     return(
         <div>
         <Typography component="h3" variant="h3" gutterBottom>
@@ -38,6 +50,7 @@ function Tickets (props) {
                     insert secondary={ticket.name}/>
         </ListItem>
         )}
+        <AddTicketContainer/>
         </List>
         </div>
         </div>);

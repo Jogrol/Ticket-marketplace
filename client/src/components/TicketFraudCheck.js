@@ -1,15 +1,12 @@
 import * as React from 'react'
-
+import Typography from '@material-ui/core/Typography';
 
 export default function TicketFraudCheck(props) {
-    return(
-
-        <div> 
-            <h3>TicketFraudCheck</h3>
-            <button  onClick={() => props.fraudChecker()}>Check</button>
-            <p>Score: {props.score}</p>
-
-        </div>
+    return(<div>
+                <Typography component="p">
+                  We calculated that the risk of this ticket being a fraud is {props.score}%. 
+                  </Typography>
+            </div>
     )
     
 }
