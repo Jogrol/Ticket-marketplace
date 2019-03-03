@@ -9,16 +9,19 @@ class ListOfEventsContainer extends React.Component {
     super()
     this.state = {
       currentPage: 1,
-      eventsPerPage: 9
+      eventsPerPage: 3
     }
   }
   
   nextPage = () => {
+    const maxPage = Math.ceil(this.props.events.length / this.state.eventsPerPage)
+    if (this.state.currentPage === maxPage) return null;
     this.setState({
       currentPage: this.state.currentPage + 1
     });
   }
   goBack = () => {
+    if (this.state.currentPage === 1) return null;
     this.setState({
       currentPage: this.state.currentPage - 1
     });
@@ -32,7 +35,6 @@ class ListOfEventsContainer extends React.Component {
       if (!this.props.events) return "loading..."
       const { events } = this.props;
       const {currentPage , eventsPerPage } = this.state
- 
      const indexOfLastEvent = currentPage * eventsPerPage;
      const indexOfFirsEvent = indexOfLastEvent - eventsPerPage;
      const currentEvents = events.slice(indexOfFirsEvent, indexOfLastEvent);
