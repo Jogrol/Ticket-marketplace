@@ -1,13 +1,12 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
-
+import { Button, TextField, CardContent, Card } from '@material-ui/core';
 
 export default function EventForm (props) {
 
     return(<div>
+        <Card>
+            <CardContent>
           <Typography component="h4" variant="h4" gutterBottom>
                 Add Event
             </Typography>
@@ -29,7 +28,7 @@ export default function EventForm (props) {
                 name="start_date"
                 value={props.values.start_date}
                 onChange={props.onChange}
-                defaultValue="2017-05-24"
+                defaultValue={Date()}
                 InputLabelProps={{
                 shrink: true,
                 }}
@@ -42,7 +41,7 @@ export default function EventForm (props) {
                 type="date"
                 value={props.values.end_date}
                 onChange={props.onChange}
-                defaultValue="2017-05-24"
+                defaultValue={Date()}
                 InputLabelProps={{
                 shrink: true,
                 }}
@@ -73,6 +72,8 @@ export default function EventForm (props) {
             Submit
             </Button>
         </form>
+        </CardContent>
+        </Card>
     </div>
     )
 } 

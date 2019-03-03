@@ -8,6 +8,7 @@ import LoginContainer from './components/LoginContainer'
 import AddEventContainer from './components/AddEventContainer'
 import EventDetailsContainer from './components/EventDetailsCotainer'
 import TicketContainer from './components/TicketContainer'
+import NavBar from './components/NavBar'
 import AddTicketContainer from './components/AddTicketContainer'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Typography from '@material-ui/core/Typography';
@@ -20,9 +21,11 @@ class App extends Component {
       <Provider store={store}>
        <MuiThemeProvider>
         <div>
+        <NavBar/>
         <Typography component="h1" variant="h1" gutterBottom>
          UberForTickets
           </Typography>
+        
           <Route path="/" exact component={ListOfEventsContainer} />
           <Route path="/sigin" exact component={SignInContainer} />
           <Route path="/login" exact component={LoginContainer} />
