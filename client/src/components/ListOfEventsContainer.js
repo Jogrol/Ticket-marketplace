@@ -9,7 +9,7 @@ class ListOfEventsContainer extends React.Component {
     super()
     this.state = {
       currentPage: 1,
-      eventsPerPage: 3
+      eventsPerPage: 9,
     }
   }
   

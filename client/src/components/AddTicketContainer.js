@@ -2,6 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {addTicketToDB} from '../actions/tickets'
 import TicketForm from './Ticketform'
+import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom'
+import store from '../store'
 
 class AddTicketContainer extends React.Component {
   
@@ -10,7 +13,7 @@ class AddTicketContainer extends React.Component {
         image: '',
         description: '',
         price: '',
-        event: Number(this.props.event.id),
+        event: Number(store.getState().event.id),
         user: ''
     }
 
@@ -22,16 +25,13 @@ class AddTicketContainer extends React.Component {
   }
   
   onSubmit = (event) => {
-    // if (this.props.currentUser === null) {
-    //   alert("To add a ticket you need to login first")}
-    // else {
     event.preventDefault()
     this.setState({
         name: '',
         image: '',
         description: '',
         price: '',
-        event: Number(this.props.match.params.id),
+        event: Number(store.getState().event.id),
         user: '',
     }
     )
@@ -40,6 +40,17 @@ class AddTicketContainer extends React.Component {
   }
 
   render() {
+    console.log(this.props.event.id)
+    if (this.props.currentUser === null) return <div>
+    <Typography component="h4" variant="h4" gutterBottom>
+  Add Ticket
+</Typography>
+    You need to login first to add a ticket.
+    <br/>
+    <Link to = {"/login"}>Login here</Link>
+    </div>
+    console.log(this.props)
+
     return (
     <TicketForm
       onSubmit={this.onSubmit}

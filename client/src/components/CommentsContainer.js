@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import {addCommentToDB} from '../actions/comments'
 import Commments from './Comments'
 import CommentForm from './CommentForm'
-
+import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom'
 
 class CommentsCotainer extends React.Component {
   
@@ -21,9 +22,6 @@ class CommentsCotainer extends React.Component {
   }
   
   onSubmit = (event) => {
-    // if (this.props.currentUser === null) {
-    //   alert("To add a comment you need to login first")}
-    // else {
     event.preventDefault()
     this.setState({
         comment: '',
@@ -32,18 +30,26 @@ class CommentsCotainer extends React.Component {
     }
     )
     this.props.addCommentToDB(this.state)
-    
-  // } 
   }
 
 
   render() {
     
     if (!this.props.ticket.id) return null
+    if (this.props.currentUser === null) return <div>
+    <Typography component="h5" variant="h5" gutterBottom>
+  Add comment
+</Typography>
+    You need to login first to add a comment.
+    <br/>
+    <Link to = {"/login"}>Login here</Link>
+    </div>
+
     return (
         <div>
     <Commments
         comments={this.props.ticket.comments}/>
+    
     <CommentForm
       onSubmit={this.onSubmit}
       onChange={this.onChange}

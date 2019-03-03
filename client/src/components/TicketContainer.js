@@ -4,10 +4,9 @@ import {loadTicket, updateTicket, loadTickets} from '../actions/tickets'
 import {loadEvents} from '../actions/events'
 import TicketDetails from './TicketDetails'
 import CommentsContainer from './CommentsContainer';
+import TicketFraudCheckContainer from '../components/TicketFraudCheckContainer'
 
 class TicketContainer extends React.Component {
-
-
 
     state = { 
       editMode:false,
@@ -20,13 +19,11 @@ class TicketContainer extends React.Component {
     }
 
     onEdit = () => {
-        // if (this.props.currentUser === null) {
-        //     alert("You need to login first")
-        // } else if (this.props.currentUser.user.id !== this.props.ticket.user) {
-        //     alert("You are not author of this ticket")
-        // } else {
-                // intialize editing mode:
-                // set the starting value of the fields to the event details
+        if (this.props.currentUser === null) {
+            alert("You need to login first")
+        } else if (this.props.currentUser.user.id !== this.props.ticket.user.id) {
+            alert("You are not author of this ticket")
+        } else {
             this.setState({
                 editMode: true,
                 formValues: {
@@ -34,10 +31,11 @@ class TicketContainer extends React.Component {
                   description: this.props.ticket.description,
                   image: this.props.ticket.image,
                   price: this.props.ticket.price,
-                  event: this.props.ticket.event
+                  event: this.props.ticket.event,
+                  user: this.props.currentUser.id
                 }
               })}
-            // }
+            }
 
     onChange = (event) => {
         // update the formValues property with the new data from the input field
@@ -75,7 +73,9 @@ class TicketContainer extends React.Component {
             formValues={this.state.formValues}
             editMode={this.state.editMode}
             />
+          <TicketFraudCheckContainer />
           <CommentsContainer/>
+          
   		    </div>
       )
       }

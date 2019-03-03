@@ -35,8 +35,8 @@ class LoginContainer extends React.Component {
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}
                     values={this.state}
+                    errorMessage={this.props.failed_login.error}
                     />
-                <p style={{color:'red'}}>{ this.props.failed_login.error }</p>
                 </div>)
    
 	}

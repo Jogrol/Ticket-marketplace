@@ -2,8 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {addEventToDB} from '../actions/events'
 import EventForm from './Eventform'
+import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom'
 
-class AddEventCotainer extends React.Component {
+class AddEventContainer extends React.Component {
   
     state = {
         name: '',
@@ -21,8 +23,8 @@ class AddEventCotainer extends React.Component {
 
   onSubmit = (event) => {
     if (this.props.currentUser === null) {
-      alert("To add an event you need to login first")}
-    else {
+    //   alert("To add an event you need to login first")}
+    // else {
     event.preventDefault()
     this.setState({
         name: '',
@@ -30,13 +32,20 @@ class AddEventCotainer extends React.Component {
         end_date: '',
         description: '',
         image: '',
-        event: this.props.match.params.id
     })
     this.props.addEventToDB(this.state)
   }
   }
 
   render() {
+    // if (this.props.currentUser === null) return <div>
+    //               <Typography component="h4" variant="h4" gutterBottom>
+    //             Add Event
+    //         </Typography>
+    //               You need to login first to add an event.
+    //               <br/>
+    //               <Link to = {"/login"}>Login here</Link>
+    //               </div>
     return (
     <EventForm
       onSubmit={this.onSubmit}
@@ -50,4 +59,4 @@ const mapStateToProps = state => (
     currentUser: state.currentUser
   })
 
-export default connect(mapStateToProps, {addEventToDB})(AddEventCotainer)
+export default connect(mapStateToProps, {addEventToDB})(AddEventContainer)

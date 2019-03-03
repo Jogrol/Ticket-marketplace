@@ -4,6 +4,7 @@ import EventDetails from './EventDetails'
 import {loadEvent} from '../actions/events'
 import Tickets from './Tickets'
 import {loadTickets} from '../actions/tickets'
+import AddTicketContainer from './AddTicketContainer';
 
 class EventDetailsContainer extends React.Component {
 
@@ -15,6 +16,7 @@ class EventDetailsContainer extends React.Component {
   render() {
    
     if (!this.props.event === undefined) return "loading..."
+
     return (
         <div>
         <EventDetails
@@ -24,6 +26,8 @@ class EventDetailsContainer extends React.Component {
             tickets={this.props.tickets}
             eventId={this.props.match.params.id}
             />
+        <AddTicketContainer 
+            eventId={this.props.match.params.id}/>
      </div>
     )
     }

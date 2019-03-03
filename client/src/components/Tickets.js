@@ -50,7 +50,7 @@ function Tickets (props) {
                     insert secondary={ticket.name}/>
         </ListItem>
         )}
-        <AddTicketContainer/>
+        <addTicketContainer/>
         </List>
         </div>
         </div>);

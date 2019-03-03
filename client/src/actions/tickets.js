@@ -1,4 +1,7 @@
 import request from 'superagent'
+import {isExpired} from '../jwt'
+import {userLogOut} from './users'
+import store from '../store'
 
 const baseUrl = 'http://localhost:4000'
 
@@ -39,36 +42,44 @@ export const loadTicket = (id) => dispatch => {
 
 
 export const addTicketToDB = (data) => dispatch => {
+    const jwt = store.getState().currentUser.jwt
+
+    if (isExpired(jwt)) return dispatch(userLogOut())
+
     const updateData = {
         name: data.name,
         description: data.description,
         image: data.image,
         price: data.price,
         event: data.event,
-        user: 1,
-        // user: store.getState().currentUser.user.id
-
+        user: store.getState().currentUser.user.id
     }
         request
           .post(`${baseUrl}/tickets`)
+          .set('Authorization', `Bearer ${jwt}`)
           .send(updateData)
           .then(response => {console.log(response)
-            dispatch(addTicketSucces(response.body))
+            dispatch(addTicketSucces(response.body.tickets))
           })
           .catch(console.error)
       }
 
 export const updateTicket = (id, data) => (dispatch) => {
+    const jwt = store.getState().currentUser.jwt
+
+    if (isExpired(jwt)) return dispatch(userLogOut())
+    
     const updateData = {
         name: data.name,
         description: data.description,
         image: data.image,
         price: data.price,
-        event: data.event
-        // user: store.getState().currentUser.user.id
+        event: data.event,
+        user: store.getState().currentUser.user.id
     }
         request
           .put(`${baseUrl}/tickets/${id}`)
+          .set('Authorization', `Bearer ${jwt}`)
           .send(updateData)
           .then(response => {
             dispatch(updateTicketSucces(response.body))

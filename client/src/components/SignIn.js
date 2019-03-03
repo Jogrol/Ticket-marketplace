@@ -30,7 +30,7 @@ export default function SignIn (props) {
                 variant="outlined"
              />
                  <br/>
-                <TextField
+            <TextField
                 id="outlined-with-placeholder"
                 label="Password"
                 type='password'
@@ -41,7 +41,7 @@ export default function SignIn (props) {
                 variant="outlined"
             />
                 <br/>
-                <TextField
+            <TextField
                 id="outlined-with-placeholder"
                 label="Password confirmation"
                 type='password'
@@ -51,7 +51,13 @@ export default function SignIn (props) {
                 margin="normal"
                 variant="outlined"
             />
-            <br/>
+              { props.values.password &&
+  				  	  props.values.password_confirmation &&
+  					    props.values.password  !== props.values.password_confirmation &&
+                <Typography component="p">
+                These passwords should match!
+              </Typography>}
+              <br/>
             <Button type="submit" variant="contained">
             Submit
             </Button>

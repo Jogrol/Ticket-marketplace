@@ -15,6 +15,7 @@ export default class EventsController {
 
     }
 
+    // @Authorized()
     @Post("/events")
     @HttpCode(201)
     createPage(@Body() event: Event) {
@@ -23,7 +24,6 @@ export default class EventsController {
 
     @Get('/event/:id')
     getEventbyId(@Param('id') id: number) {
-      console.log(id)
       return Event.findOne(id);
     }
     }

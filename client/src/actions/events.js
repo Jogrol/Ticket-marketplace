@@ -1,4 +1,6 @@
 import request from 'superagent'
+import {isExpired} from '../jwt'
+import {userLogOut} from './users'
 import store from '../store'
 const baseUrl = 'http://localhost:4000'
 
@@ -38,17 +40,20 @@ export const loadEvents = () => (dispatch, getState) => {
 
 
   export const addEventToDB = (data) => dispatch => {
+    // const jwt = store.getState().currentUser.jwt
+    // if (isExpired(jwt)) return dispatch(userLogOut())
     request
       .post(`${baseUrl}/events`)
+      // .set('Authorization', `Bearer ${jwt}`)
       .send(data)
       .then(response => {
         dispatch(addEventSucces(response.body))
       })
-      .catch(console.error)
+      .catch(err => {console.log(err)})
   }
 
   export const loadEvent = (id) => dispatch => {
-    // if (store.getState().event.id) return null
+    if (store.getState().event.id) return null
     request
     .get(`${baseUrl}/event/${id}`)
         .then(response => { 

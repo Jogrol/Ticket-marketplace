@@ -38,8 +38,13 @@ export default function Login (props) {
                 Submit
                 </Button>
             </form>
+            <br/>
+            <Typography  stylecomponent="p">
+            {props.errorMessage}
+            </Typography>
             </CardContent>
              </Card>
+
             </div>)
 
 } 

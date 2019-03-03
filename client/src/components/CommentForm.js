@@ -21,7 +21,9 @@ export default function CommentForm (props) {
                 variant="outlined"
             />
             <br/>
-            <Button>Add</Button>
+            <Button type="submit" variant="contained">
+            Submit
+            </Button>
         </form>
         </CardContent>
         </Card>
