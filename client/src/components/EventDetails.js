@@ -24,8 +24,6 @@ function EventDetails(props) {
     return(
       
         <div> 
-            
-
             <Typography component="h3" variant="h3" gutterBottom>
             
              </Typography>

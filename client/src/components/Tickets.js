@@ -1,64 +1,47 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     root: {
-      flexGrow: 1,
-      maxWidth: 752,
-    },
-    demo: {
+      width: '100%',
+      maxWidth: 360,
       backgroundColor: theme.palette.background.paper,
-    },
-    title: {
-      margin: `${theme.spacing.unit * 4}px 0 ${theme.spacing.unit * 2}px`,
     },
   });
 
 function Tickets (props) {
     
-    // const { classes } = this.props;
-
-    if (!props.tickets) return <p>No tickets avalaible</p>
+    if (!props.tickets) return  (<Typography component="h4" variant="h4" gutterBottom>
+    No tickets avalaible
+    </Typography>)
 
     let filteredTicket = props.tickets.filter(ticket => ticket.event.id == props.eventId)
 
-    return( <div> 
-                <br/>
-                <Typography component="h3" variant="h3" gutterBottom>
-                Avalaible tickets
-                </Typography>
-                <div>
-                <List> 
-                {filteredTicket.map((ticket) => 
-                <ListItem key={ticket.id}>
-                   <Typography component="p">
-                     €{ticket.price} 
-                     </Typography>
-                    <Link to = {`/events/${props.eventId}/ticket/${ticket.id}`}>
-                    {ticket.name}
-                    </Link>
-                </ListItem>)}
-                </List>   
-           </div>
+    return(
+        <div>
+        <Typography component="h3" variant="h3" gutterBottom>
+        Avalaible tickets
+        </Typography>
+        <div>
+          <List>
+        {filteredTicket.map((ticket) =><ListItem key={ticket.id}>
+        <Link to = {`/events/${props.eventId}/ticket/${ticket.id}`}><Button>
+                Buy
+            </Button></Link>
+       <ListItemText inset primary={ticket.price}
+                    insert secondary={ticket.name}/>
+        </ListItem>
+        )}
+        </List>
         </div>
-    )
-
-    
+        </div>);
 }
-
-
-export default withStyles(styles)(Tickets);
+    
+export default withStyles(styles)(Tickets);  
+    

@@ -47,11 +47,11 @@ class TicketContainer extends React.Component {
     }
 
     onEdit = () => {
-        if (this.props.currentUser === null) {
-            alert("You need to login first")
-        } else if (this.props.currentUser.user.id !== this.props.ticket.user) {
-            alert("You are not author of this ticket")
-        } else {
+        // if (this.props.currentUser === null) {
+        //     alert("You need to login first")
+        // } else if (this.props.currentUser.user.id !== this.props.ticket.user) {
+        //     alert("You are not author of this ticket")
+        // } else {
                 // intialize editing mode:
                 // set the starting value of the fields to the event details
             this.setState({
@@ -64,7 +64,7 @@ class TicketContainer extends React.Component {
                   event: this.props.ticket.event
                 }
               })}
-            }
+            // }
 
     onChange = (event) => {
         // update the formValues property with the new data from the input field

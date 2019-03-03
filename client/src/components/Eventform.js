@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 export default function EventForm (props) {
 
     return(<div>
-          <Typography component="h2" variant="h2" gutterBottom>
+          <Typography component="h4" variant="h4" gutterBottom>
                 Add Event
             </Typography>
         <form onSubmit={props.onSubmit} >

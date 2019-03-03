@@ -1,35 +1,64 @@
 import * as React from 'react'
 import Typography from '@material-ui/core/Typography';
+import { Button, TextField, CardContent, Card } from '@material-ui/core';
 
 export default function SignIn (props) {
     return(<div>
-            <Typography component="h2" variant="h2" gutterBottom>
+      <Card>
+        <CardContent>
+        <Typography component="h3" variant="h3" gutterBottom>
               Sign in
             </Typography>
-        <form onSubmit={props.onSubmit} >
-            <label >Username: </label>
-            <input type ='text' name="userName" value={props.values.userName} onChange={props.onChange}></input>
+            <form onSubmit={props.onSubmit} >
+            <TextField
+                id="outlined-with-placeholder"
+                label="Username"
+                placeholder="Username"
+                name="userName" value={props.values.userName}
+                onChange={props.onChange}
+                margin="normal"
+                variant="outlined"
+            />
             <br/>
-            <label>Email: </label>
-            <input type ='email' name='email'value={props.values.email} onChange={props.onChange}></input>
+            <TextField
+                id="outlined-with-placeholder"
+                label="Email"
+                placeholder="Email"
+                name="email" value={props.values.email}
+                onChange={props.onChange}
+                margin="normal"
+                variant="outlined"
+             />
+                 <br/>
+                <TextField
+                id="outlined-with-placeholder"
+                label="Password"
+                type='password'
+                placeholder="Password"
+                name="password" value={props.values.password}
+                onChange={props.onChange}
+                margin="normal"
+                variant="outlined"
+            />
+                <br/>
+                <TextField
+                id="outlined-with-placeholder"
+                label="Password confirmation"
+                type='password'
+                placeholder="Password confirmation"
+                name="password_confirmation" value={props.values.password_confirmation}
+                onChange={props.onChange}
+                margin="normal"
+                variant="outlined"
+            />
             <br/>
-            <label>Password: </label>
-            <input type='password' name='password' value={props.values.password} onChange={props.onChange}></input>
-            <br/>
-            <label>Password confirmation: </label>
-            <input type='password_confirmation' name='password_confirmation' value={props.values.password_confirmation} onChange={props.onChange}></input>
-            <button type="submit">Submit</button>
-            {
-  					props.values.password &&
-  					props.values.password_confirmation &&
-  					props.values.password !== props.values.password_confirmation &&
-  					<p style={{color:'red'}}>Passwords do not match</p>
-  				}
+            <Button type="submit" variant="contained">
+            Submit
+            </Button>
         </form>
-
-        
+        </CardContent>
+      </Card>
     </div>
-
     )
 
 } 

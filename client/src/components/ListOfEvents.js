@@ -16,6 +16,7 @@ const styles = {
   },
   media: {
     height: 140,
+    witdh: 140,
   },
 };
 
