@@ -31,7 +31,7 @@ function Tickets (props) {
         <div>
           <List>
         {filteredTicket.map((ticket) =><ListItem key={ticket.id}>
-        <Link to = {`/events/${props.eventId}/ticket/${ticket.id}`}><Button>
+        <Link to = {`/events/${props.eventId}/tickets/${ticket.id}`}><Button>
                 Buy
             </Button></Link>
        <ListItemText inset primary={ticket.price}

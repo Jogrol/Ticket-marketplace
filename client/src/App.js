@@ -11,7 +11,6 @@ import TicketContainer from './components/TicketContainer'
 import NavBar from './components/NavBar'
 import AddTicketContainer from './components/AddTicketContainer'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom'
 
 
@@ -27,7 +26,7 @@ class App extends Component {
           <Route path="/login" exact component={LoginContainer} />
           <Route path='/events/add-event' exact component={AddEventContainer} />
           <Route path="/events/:id" exact component={EventDetailsContainer} />
-          <Route path="/events/:id/ticket/:id" exact component={TicketContainer} />
+          <Route path="/events/:id/tickets/:id" exact component={TicketContainer} />
           <Route path="/events/:id/add-ticket" exact component={AddTicketContainer} />
         </div>
         <div>
