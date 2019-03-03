@@ -73,9 +73,7 @@ class TicketContainer extends React.Component {
             formValues={this.state.formValues}
             editMode={this.state.editMode}
             />
-          <TicketFraudCheckContainer />
           <CommentsContainer/>
-          
   		    </div>
       )
       }

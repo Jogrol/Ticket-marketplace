@@ -15,7 +15,7 @@ class TicketFraudCheckContainer extends React.Component {
       }
 
     componentWillMount(){
-      if(this.props.tickets && this.props.ticket) {
+      if(this.props.tickets && this.props.ticket.comments) {
         this.fraudChecker()
       }
     }

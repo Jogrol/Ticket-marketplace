@@ -38,14 +38,14 @@ class AddEventContainer extends React.Component {
   }
 
   render() {
-    // if (this.props.currentUser === null) return <div>
-    //               <Typography component="h4" variant="h4" gutterBottom>
-    //             Add Event
-    //         </Typography>
-    //               You need to login first to add an event.
-    //               <br/>
-    //               <Link to = {"/login"}>Login here</Link>
-    //               </div>
+    if (this.props.currentUser === null) return <div>
+                  <Typography component="h4" variant="h4" gutterBottom>
+                Add Event
+            </Typography>
+                  You need to login first to add an event.
+                  <br/>
+                  <Link to = {"/login"}>Login here</Link>
+                  </div>
     return (
     <EventForm
       onSubmit={this.onSubmit}
