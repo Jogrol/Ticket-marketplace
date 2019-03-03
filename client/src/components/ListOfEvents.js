@@ -52,6 +52,10 @@ function ListOfEvents (props) {
               </Card>)}
               <Button  onClick={() => props.goBack()}>Back</Button>
               <Button  onClick={() => props.nextPage()}>Next</Button>
+              <br/>
+              <Link to = {`/events/add-event/`}><Button>
+                    Add event
+                  </Button></Link>
               </div> )
     
 }

@@ -22,14 +22,10 @@ class App extends Component {
        <MuiThemeProvider>
         <div>
         <NavBar/>
-        <Typography component="h1" variant="h1" gutterBottom>
-         UberForTickets
-          </Typography>
-        
           <Route path="/" exact component={ListOfEventsContainer} />
           <Route path="/sigin" exact component={SignInContainer} />
           <Route path="/login" exact component={LoginContainer} />
-          <Route path='/add-event' exact component={AddEventContainer} />
+          <Route path='/events/add-event' exact component={AddEventContainer} />
           <Route path="/events/:id" exact component={EventDetailsContainer} />
           <Route path="/events/:id/ticket/:id" exact component={TicketContainer} />
           <Route path="/events/:id/add-ticket" exact component={AddTicketContainer} />
