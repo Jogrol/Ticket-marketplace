@@ -11,13 +11,34 @@ import AddEventContainer from './AddEventContainer';
 
 
 const styles = {
+  buttonDecoraction: {
+    textDecoration: "none", 
+    color: '#fff'
+  },
+  homeScreen: {
+    flexWrap: "wrap",
+    display: "flex",
+    justifyContent: "center",
+    AlignContent: "center",
+  },
+  navigationButtons:{
+    display: "inline_block",
+  },
+  cardContainer: {
+    flexWrap: "wrap",
+    display: "flex",
+    justifyContent: "center",
+    AlignContent: "center",
+  },
   card: {
-    maxWidth: 345,
-    witdh: 200,
+    margin: "10px",
+    display: "flex",
+    maxWidth: "400px",
+    maxHeight: "400px"
   },
   media: {
     height: 140,
-    witdh: 140,
+    witdh: "100%",
   },
 };
 
@@ -25,37 +46,46 @@ function ListOfEvents (props) {
 
   const { classes } = props;
   return(
-      <div>
+    <div className={classes.homeScreen}>
+          <br/>
         <Typography component="h2" variant="h2" gutterBottom>
                 Events
         </Typography>
+        <div className={classes.cardContainer}>
         {props.events.map((event) => 
-          <Card key={event.id}>
+          <Card key={event.id} className={classes.card}>
             <CardContent>
               <CardMedia
                 className={classes.media}
                 image={event.image}
                 title="image Event"
                 />
+                  <br/>
               <Typography gutterBottom variant="h5" component="h2">
                 {event.name} 
                 </Typography>
               <Typography component="p">
-                Description: {event.description} 
-                <br/>
+                {/* Description: {event.description} 
+                <br/> */}
                 <b>Start date:</b> {event.start_date} <b>End date:</b> {event.end_date}
                 </Typography>
-              </CardContent>
-            <CardActions>
-              <Link to = {`/events/${event.id}/`}><Button>
+                <Link to = {`/events/${event.id}/`} className={classes.buttonDecoraction}><Button>
                 More info
                 </Button></Link>
-              </CardActions>
+              </CardContent>
+              <br/>
+
             </Card>)}
-          <Button  onClick={() => props.goBack()}>Back</Button>
-          <Button  onClick={() => props.nextPage()}>Next</Button>
+          </div>
+            <div className={classes.navigationButtons}>
+              <Button  onClick={() => props.goBack()}>Back</Button>
+              <Button  onClick={() => props.nextPage()}>Next</Button>
+             
+            </div>
           <br/>
-          <AddEventContainer />
+          <div>
+          <AddEventContainer /> 
+          </div>
         </div> )
     
 }

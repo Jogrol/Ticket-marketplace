@@ -7,8 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     card: {
-      maxWidth: 345,
-      witdh: 200,
+      Maxwidth: 100,
     },
     media: {
       height: 140,
@@ -22,7 +21,7 @@ function EventDetails(props) {
     return(
       
         <div> 
-             <Card>
+             <Card className={classes.card} >
              <Typography component="h2" variant="h2" gutterBottom>
              Event details
             </Typography>

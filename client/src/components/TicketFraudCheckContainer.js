@@ -21,7 +21,7 @@ class TicketFraudCheckContainer extends React.Component {
     }
 
     fraudChecker = () => {
-        let score = 5
+        let score = 0
         if (parseInt(this.props.ticket.created_on) > 9 && parseInt(this.props.ticket.created_on) < 18 ) {score=score+10 } 
             else {score=score-10}
 

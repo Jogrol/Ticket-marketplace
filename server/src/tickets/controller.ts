@@ -16,10 +16,11 @@ export default class TicketsController {
       return Ticket.findOne(id);
     }
 
-    @Get("/ticket-by-userid/:id")
-    getTotalofTicketbyUser(@Param('id') id: number) {
-      return Ticket.find({ where: {user : id}});
-    }
+    // @Get('/tickets/:id')
+    // getCommentbyId(@Param('id') id: number) {
+    //   return Comment.find({ where: {ticket : id}});
+    // }
+    
     
     @Authorized()
     @Put("/tickets/:id")

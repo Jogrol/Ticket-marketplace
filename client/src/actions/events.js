@@ -27,8 +27,8 @@ const eventFetched = event => ({
 export const loadEvents = () => (dispatch, getState) => {
   if (getState().events) return null
   request(`${baseUrl}/events`)
-    .then(response => {
-      dispatch(eventsFetched(response.body.upCommingEvents))
+    .then(response => { console.log(response)
+      dispatch(eventsFetched(response.body.events))
     })
     .catch(console.error)
 }

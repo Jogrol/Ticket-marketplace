@@ -9,6 +9,10 @@ import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom'
 
 const styles = {
+  buttonDecoraction: {
+    textDecoration: "none", 
+    color: '#fff'
+  },
   root: {
     flexGrow: 1,
   },
@@ -23,18 +27,19 @@ const styles = {
 
 function NavBar(props) {
   const { classes } = props;
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <Button color="inherit"><Link to = {"/"}>Home</Link></Button>
+            <Button color="inherit"><Link to = {"/"} className={classes.buttonDecoraction}>Events</Link></Button>
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
             UberForTickets
           </Typography>
-         <Button color="inherit"><Link to = {"/login"}>Login</Link></Button>
-         <Link to = {"/sigin"}><Button color="inherit">Register</Button></Link>
+         <Button color="inherit" ><Link to = {"/login"} className={classes.buttonDecoraction}>Login</Link></Button>
+         <Link  to = {"/sigin" } className={classes.buttonDecoraction}><Button color="inherit">Register</Button></Link>
         </Toolbar>
       </AppBar>
     </div>

@@ -1,19 +1,20 @@
 import {Authorized, Controller, Get, Post, HttpCode, Body, Param} from 'routing-controllers'
 import Event from './entity'
-import * as moment from 'moment'
-
+// import * as moment from 'moment'
+import {MoreThanOrEqual} from "typeorm"
 
 @Controller()
 export default class EventsController {
-
-    @Get('/events')
-    async allEvents() {
-        const events = await Event.find();
-        const today = moment().format('L');
-        const upCommingEvents = await events.filter(event =>  moment(event.end_date).format('L') > today)
-        return { upCommingEvents };
-
-    }
+  
+  
+  @Get('/events')
+  async allEvents() {
+    const today = new Date()
+    const events = await Event.find({where: {end_date: MoreThanOrEqual(today)}, order: {
+      start_date: "ASC",
+  }})
+    return {events}
+  }
 
     @Authorized()
     @Post("/events")

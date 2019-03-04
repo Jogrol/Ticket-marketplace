@@ -36,6 +36,8 @@ class CommentsCotainer extends React.Component {
     
     if (!this.props.ticket.id) return null
     if (this.props.currentUser === null) return <div>
+      <Commments
+        comments={this.props.ticket.comments}/>
       <Typography component="h5" variant="h5" gutterBottom>
         Add comment
       </Typography>
