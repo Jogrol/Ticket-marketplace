@@ -22,7 +22,6 @@ class AddEventContainer extends React.Component {
   }
 
   onSubmit = (event) => {
-    if (this.props.currentUser === null) {
     event.preventDefault()
     this.setState({
         name: '',
@@ -33,7 +32,6 @@ class AddEventContainer extends React.Component {
       })
     this.props.addEventToDB(this.state)
     }
-  }
 
   render() {
     if (this.props.currentUser === null) return <div>

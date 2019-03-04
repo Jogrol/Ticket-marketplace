@@ -1,4 +1,4 @@
-import {Controller, Get, Post, HttpCode, Body, Param} from 'routing-controllers'
+import {Authorized, Controller, Get, Post, HttpCode, Body, Param} from 'routing-controllers'
 import Event from './entity'
 import * as moment from 'moment'
 
@@ -15,7 +15,7 @@ export default class EventsController {
 
     }
 
-    // @Authorized()
+    @Authorized()
     @Post("/events")
     @HttpCode(201)
     createPage(@Body() event: Event) {

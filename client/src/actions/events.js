@@ -35,11 +35,11 @@ export const loadEvents = () => (dispatch, getState) => {
 
 
 export const addEventToDB = (data) => dispatch => {
-  // const jwt = store.getState().currentUser.jwt
-  // if (isExpired(jwt)) return dispatch(userLogOut())
+  const jwt = store.getState().currentUser.jwt
+  if (isExpired(jwt)) return dispatch(userLogOut())
   request
     .post(`${baseUrl}/events`)
-    // .set('Authorization', `Bearer ${jwt}`)
+    .set('Authorization', `Bearer ${jwt}`)
     .send(data)
     .then(response => {
       dispatch(addEventSucces(response.body))
