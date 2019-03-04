@@ -11,7 +11,6 @@ import TicketContainer from './components/TicketContainer'
 import NavBar from './components/NavBar'
 import AddTicketContainer from './components/AddTicketContainer'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import { Link } from 'react-router-dom'
 
 
 class App extends Component {
@@ -30,17 +29,11 @@ class App extends Component {
           <Route path="/events/:id/add-ticket" exact component={AddTicketContainer} />
         </div>
         <div>
-            <h3>Navbar</h3>
-            <Link to = {"/events"}>All events</Link>
-            <br/>
-            <Link to = {"/sigin"}>Signin</Link>
-            <br/>
-            <Link to = {"/login"}>login</Link>
-            <br/>
-            <Link to = {"/add-event"}>add-event</Link>
-            <br/>
-            <Link to = {"/events/:id/add-ticket"}>add-ticket</Link>
-            <br/>
+        <foote style={{
+          textalign:'center'
+        }}>
+          <p>Made with love by Joey Grolleman</p>
+        </foote>
         </div>
         </MuiThemeProvider>
       </Provider>

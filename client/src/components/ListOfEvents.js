@@ -24,38 +24,39 @@ const styles = {
 function ListOfEvents (props) {
 
   const { classes } = props;
-  return(<div>
-             <Typography component="h2" variant="h2" gutterBottom>
+  return(
+      <div>
+        <Typography component="h2" variant="h2" gutterBottom>
                 Events
-              </Typography>
-              {props.events.map((event) => 
-              <Card key={event.id}>
-                <CardContent>
-                  <CardMedia
-                      className={classes.media}
-                      image={event.image}
-                      title="image Event"
-                      />
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {event.name} 
-                      </Typography>
-                      <Typography component="p">
-                        Description: {event.description} 
-                      <br/>
-                      <b>Start date:</b> {event.start_date} <b>End date:</b> {event.end_date}
-                      </Typography>
-                      </CardContent>
-                      <CardActions>
-                  <Link to = {`/events/${event.id}/`}><Button>
-                    Go to event
-                  </Button></Link>
-                  </CardActions>
-              </Card>)}
-              <Button  onClick={() => props.goBack()}>Back</Button>
-              <Button  onClick={() => props.nextPage()}>Next</Button>
-              <br/>
-              <AddEventContainer />
-              </div> )
+        </Typography>
+        {props.events.map((event) => 
+          <Card key={event.id}>
+            <CardContent>
+              <CardMedia
+                className={classes.media}
+                image={event.image}
+                title="image Event"
+                />
+              <Typography gutterBottom variant="h5" component="h2">
+                {event.name} 
+                </Typography>
+              <Typography component="p">
+                Description: {event.description} 
+                <br/>
+                <b>Start date:</b> {event.start_date} <b>End date:</b> {event.end_date}
+                </Typography>
+              </CardContent>
+            <CardActions>
+              <Link to = {`/events/${event.id}/`}><Button>
+                More info
+                </Button></Link>
+              </CardActions>
+            </Card>)}
+          <Button  onClick={() => props.goBack()}>Back</Button>
+          <Button  onClick={() => props.nextPage()}>Next</Button>
+          <br/>
+          <AddEventContainer />
+        </div> )
     
 }
 

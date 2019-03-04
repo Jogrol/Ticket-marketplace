@@ -32,32 +32,30 @@ class CommentsCotainer extends React.Component {
     this.props.addCommentToDB(this.state)
   }
 
-
   render() {
     
     if (!this.props.ticket.id) return null
     if (this.props.currentUser === null) return <div>
-    <Typography component="h5" variant="h5" gutterBottom>
-  Add comment
-</Typography>
-    You need to login first to add a comment.
-    <br/>
-    <Link to = {"/login"}>Login here</Link>
-    </div>
+      <Typography component="h5" variant="h5" gutterBottom>
+        Add comment
+      </Typography>
+        You need to login first to add a comment.
+        <br/>
+        <Link to = {"/login"}>Login here</Link>
+      </div>
 
     return (
-        <div>
-    <Commments
+      <div>
+       <Commments
         comments={this.props.ticket.comments}/>
     
-    <CommentForm
-      onSubmit={this.onSubmit}
-      onChange={this.onChange}
-      values={this.state}
-    />
-    </div>)
+      <CommentForm
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state}
+      />
+     </div>)
   }
-  
 }
 
 const mapStateToProps = state => (

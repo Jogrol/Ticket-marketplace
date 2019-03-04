@@ -23,8 +23,6 @@ class AddEventContainer extends React.Component {
 
   onSubmit = (event) => {
     if (this.props.currentUser === null) {
-    //   alert("To add an event you need to login first")}
-    // else {
     event.preventDefault()
     this.setState({
         name: '',
@@ -32,28 +30,30 @@ class AddEventContainer extends React.Component {
         end_date: '',
         description: '',
         image: '',
-    })
+      })
     this.props.addEventToDB(this.state)
-  }
+    }
   }
 
   render() {
     if (this.props.currentUser === null) return <div>
-                  <Typography component="h4" variant="h4" gutterBottom>
-                Add Event
+            <Typography component="h4" variant="h4" gutterBottom>
+              Add Event
             </Typography>
-                  You need to login first to add an event.
-                  <br/>
-                  <Link to = {"/login"}>Login here</Link>
-                  </div>
+              You need to login first to add an event.
+              <br/>
+              <Link to = {"/login"}>Login here</Link>
+          </div>
+    
     return (
-    <EventForm
-      onSubmit={this.onSubmit}
-      onChange={this.onChange}
-      values={this.state}
-    />)
-  }
+      <EventForm
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state}
+      />)
+    }
 }
+
 const mapStateToProps = state => (
   {
     currentUser: state.currentUser

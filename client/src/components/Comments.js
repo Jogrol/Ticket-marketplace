@@ -31,10 +31,13 @@ function Comments (props) {
             <Typography component="h5" variant="h5" gutterBottom>
             Comments
             </Typography>
-            <Card> <CardContent><Typography component="p">
-                            No comments
-                        </Typography></CardContent></Card>
-             
+            <Card> 
+              <CardContent>
+                <Typography component="p">
+                No comments
+                  </Typography>
+              </CardContent>
+            </Card>
             </div>)
 
     return(
@@ -43,16 +46,17 @@ function Comments (props) {
         <Typography component="h5" variant="h5" gutterBottom>
          Comments
         </Typography>
-           {props.comments.map((comment) => <Card key={comment.id}>
-           <CardContent>
-           <Typography component="p">
-            {comment.comment}
-           </Typography>
-           <Typography className={classes.title} color="textSecondary" gutterBottom>
-           {comment.user.userName}
-            </Typography>
-           </CardContent>
-           </Card>)}
+        {props.comments.map((comment) => 
+        <Card key={comment.id}>
+          <CardContent>
+            <Typography component="p">
+              {comment.comment}
+              </Typography>
+            <Typography className={classes.title} color="textSecondary" gutterBottom>
+              {comment.user.userName}
+              </Typography>
+          </CardContent>
+        </Card>)}
         </div>
     )
 }

@@ -23,67 +23,64 @@ function TicketDetails(props) {
 
     const { classes } = props;
 
-    return(<div> 
-         <Typography component="h2" variant="h2" gutterBottom>
-         Ticket Details
-        </Typography>
-        {props.editMode && <div>
+    return(
+        <div> 
+          <Typography component="h2" variant="h2" gutterBottom>
+          Ticket Details
+          </Typography>
+          {props.editMode && <div>
             <Card>
-            <CardContent>
-                <br/>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {props.ticket.name}
+              <CardContent>
+                  <br/>
+                  <Typography gutterBottom variant="h5" component="h2">
+                      {props.ticket.name}
                   </Typography>
                   <Typography component="p">
                   Price:{props.ticket.price}
                   <br />
                   {props.ticket.description}
                   </Typography>
-                  <TicketFraudCheckContainer />
-                  </CardContent>
-                  <CardMedia
+              </CardContent>
+                <CardMedia
                   className={classes.media}
                   image={props.ticket.image}
                   title="image ticket"
-                  />
-
-                <Button onClick={() => props.onEdit()}>Edit</Button>
-            <TicketFraudCheckContainer />
-        </Card>
+                />
+                  <Button onClick={() => props.onEdit()}>Edit</Button>
+                 <TicketFraudCheckContainer />
+            </Card>
                 <Typography component="h4" variant="h4" gutterBottom>
                   Change details
                  </Typography>
                 <TicketForm onSubmit={props.onSubmit} onChange={props.onChange} values={props.formValues} /> </div>}
-        {!props.editMode && <div>
+                {!props.editMode && <div>
             <Card>
-            <CardContent>
-                <br/>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {props.ticket.name}
-                  </Typography>
-                  <Typography component="p">
-                  Price: € {props.ticket.price}
-                  </Typography>
-                  <Typography component="p">
-                  {props.ticket.description}
-                  </Typography>
-                  <br/>
-                  <TicketFraudCheckContainer />
-                  </CardContent>
-                  <CardMedia
-                  className={classes.media}
-                  image={props.ticket.image}
-                  title="image ticket"
-                  />
                 <CardContent>
-                <Button onClick={() => props.onEdit()}>Edit</Button>
+                  <br/>
+                  <Typography gutterBottom variant="h5" component="h2">
+                      {props.ticket.name}
+                    </Typography>
+                    <Typography component="p">
+                    Price: € {props.ticket.price}
+                    </Typography>
+                    <Typography component="p">
+                    {props.ticket.description}
+                    </Typography>
+                    <br/>
                 </CardContent>
-        </Card>
+                    <CardMedia
+                    className={classes.media}
+                    image={props.ticket.image}
+                    title="image ticket"
+                    />
+                <CardContent>
+                  <Button onClick={() => props.onEdit()}>Edit</Button>
+                  <TicketFraudCheckContainer />
+                 </CardContent>
+            </Card>
          </div>}
     </div>
-      
     )
-    
 }
 export default withStyles(styles)(TicketDetails);
 

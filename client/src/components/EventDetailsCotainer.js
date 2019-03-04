@@ -29,7 +29,7 @@ class EventDetailsContainer extends React.Component {
         <AddTicketContainer 
             eventId={this.props.match.params.id}/>
      </div>
-    )
+      )
     }
 }
 

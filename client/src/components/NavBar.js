@@ -26,7 +26,6 @@ function NavBar(props) {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-      
         <Toolbar>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <Button color="inherit"><Link to = {"/"}>Home</Link></Button>
@@ -35,7 +34,7 @@ function NavBar(props) {
             UberForTickets
           </Typography>
          <Button color="inherit"><Link to = {"/login"}>Login</Link></Button>
-         <Button color="inherit"><Link to = {"/sigin"}>Sigin</Link></Button>
+         <Link to = {"/sigin"}><Button color="inherit">Register</Button></Link>
         </Toolbar>
       </AppBar>
     </div>

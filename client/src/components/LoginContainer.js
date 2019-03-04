@@ -14,7 +14,7 @@ class LoginContainer extends React.Component {
         this.setState({
           [event.target.name]: event.target.value
         })
-      }
+    }
 
 	onSubmit = (event) => {
         event.preventDefault()
@@ -23,12 +23,9 @@ class LoginContainer extends React.Component {
             password: ''
         })
 		this.props.login(this.state)
-	}
-
-	
-
+    }
+    
 	render() {
-  
 		return (
             <div>
                 <Login
@@ -37,8 +34,7 @@ class LoginContainer extends React.Component {
                     values={this.state}
                     errorMessage={this.props.failed_login.error}
                     />
-                </div>)
-   
+            </div>)
 	}
 }
 

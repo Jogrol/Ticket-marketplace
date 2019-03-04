@@ -17,7 +17,6 @@ class AddTicketContainer extends React.Component {
         user: ''
     }
 
-    
   onChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -33,32 +32,28 @@ class AddTicketContainer extends React.Component {
         price: '',
         event: Number(store.getState().event.id),
         user: '',
-    }
+      }
     )
     this.props.addTicketToDB(this.state)
-  // }
   }
 
   render() {
-    console.log(this.props.event.id)
     if (this.props.currentUser === null) return <div>
-    <Typography component="h4" variant="h4" gutterBottom>
-  Add Ticket
-</Typography>
-    You need to login first to add a ticket.
-    <br/>
-    <Link to = {"/login"}>Login here</Link>
-    </div>
-    console.log(this.props)
+      <Typography component="h4" variant="h4" gutterBottom>
+      Add Ticket
+      </Typography>
+      You need to login first to add a ticket.
+      <br/>
+      <Link to = {"/login"}>Login here</Link>
+      </div>
 
     return (
-    <TicketForm
+      <TicketForm
       onSubmit={this.onSubmit}
       onChange={this.onChange}
       values={this.state}
-    />)
+      />)
   }
-  
 }
 
 const mapStateToProps = state => (

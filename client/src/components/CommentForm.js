@@ -7,26 +7,27 @@ import CardContent from '@material-ui/core/CardContent';
 
 export default function CommentForm (props) {
 
-    return(<div> <Card>
+    return(
+        <div> 
+            <Card>
                <CardContent>
-        <form onSubmit={props.onSubmit} >
-
-            <TextField
-                id="outlined-with-placeholder"
-                label="Add comment"
-                placeholder="Add comment"
-                name="comment" value={props.values.comment}
-                onChange={props.onChange}
-                margin="normal"
-                variant="outlined"
-            />
-            <br/>
-            <Button type="submit" variant="contained">
-            Submit
-            </Button>
-        </form>
-        </CardContent>
-        </Card>
-    </div>
+                <form onSubmit={props.onSubmit} >
+                    <TextField
+                        id="outlined-with-placeholder"
+                        label="Add comment"
+                        placeholder="Add comment"
+                        name="comment" value={props.values.comment}
+                        onChange={props.onChange}
+                        margin="normal"
+                        variant="outlined"
+                    />
+                    <br/>
+                    <Button type="submit" variant="contained">
+                    Submit
+                    </Button>
+                </form>
+                </CardContent>
+            </Card>
+        </div>
     )
 } 

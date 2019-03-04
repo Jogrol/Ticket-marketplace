@@ -4,7 +4,6 @@ import {loadTicket, updateTicket, loadTickets} from '../actions/tickets'
 import {loadEvents} from '../actions/events'
 import TicketDetails from './TicketDetails'
 import CommentsContainer from './CommentsContainer';
-import TicketFraudCheckContainer from '../components/TicketFraudCheckContainer'
 
 class TicketContainer extends React.Component {
 
@@ -16,7 +15,7 @@ class TicketContainer extends React.Component {
       this.props.loadTicket(Number(this.props.match.params.id))
       this.props.loadEvents()
       this.props.loadTickets()
-    }
+      }
 
     onEdit = () => {
         if (this.props.currentUser === null) {
@@ -34,11 +33,11 @@ class TicketContainer extends React.Component {
                   event: this.props.ticket.event,
                   user: this.props.currentUser.id
                 }
-              })}
-            }
+              })
+          }
+      }
 
     onChange = (event) => {
-        // update the formValues property with the new data from the input field
         this.setState({
           formValues: {
             ...this.state.formValues,
@@ -52,7 +51,6 @@ class TicketContainer extends React.Component {
         this.setState({
           editMode: false
         })
-        
         this.props.updateTicket(this.props.ticket.id, this.state.formValues)
       }
     
@@ -72,11 +70,11 @@ class TicketContainer extends React.Component {
             onDelete={this.onDelete}
             formValues={this.state.formValues}
             editMode={this.state.editMode}
-            />
-          <CommentsContainer/>
-  		    </div>
-      )
-      }
+              />
+            <CommentsContainer/>
+          </div>
+        )
+    }
   }
   
   const mapStateToProps = state => (

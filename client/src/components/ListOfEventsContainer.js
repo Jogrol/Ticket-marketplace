@@ -32,24 +32,22 @@ class ListOfEventsContainer extends React.Component {
   }
 
   render() {
-      if (!this.props.events) return "loading..."
-      const { events } = this.props;
-      const {currentPage , eventsPerPage } = this.state
-     const indexOfLastEvent = currentPage * eventsPerPage;
-     const indexOfFirsEvent = indexOfLastEvent - eventsPerPage;
-     const currentEvents = events.slice(indexOfFirsEvent, indexOfLastEvent);
-     const pageNumbers = [];
+    if (!this.props.events) return "loading..."
+    const { events } = this.props;
+    const {currentPage , eventsPerPage } = this.state
+    const indexOfLastEvent = currentPage * eventsPerPage;
+    const indexOfFirsEvent = indexOfLastEvent - eventsPerPage;
+    const currentEvents = events.slice(indexOfFirsEvent, indexOfLastEvent);
+    const pageNumbers = [];
 
-     for (let i = 1; i <= Math.ceil(events.length / eventsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(events.length / eventsPerPage); i++) {
        pageNumbers.push(i);
-      }
+    }
 
-     return (<ListOfEvents events={currentEvents} 
+    return (<ListOfEvents events={currentEvents} 
               pagenumber={pageNumbers} 
               goBack={this.goBack }
               nextPage={this.nextPage} />)
-     
-   
   }
 }
 

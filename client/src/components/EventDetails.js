@@ -22,30 +22,27 @@ function EventDetails(props) {
     return(
       
         <div> 
-            <Typography component="h3" variant="h3" gutterBottom>
-            
-             </Typography>
              <Card>
              <Typography component="h2" variant="h2" gutterBottom>
              Event details
             </Typography>
-                <CardContent>
-                  <CardMedia
-                      className={classes.media}
-                      image={props.event.image}
-                      title="image Event"
-                      />
-                    <br/>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        Name: {props.event.name}
-                      </Typography>
-                      <Typography component="p">
-                        Description: {props.event.description} 
-                      <br/>
-                      <br/>
-                      <b>Start date:</b> {props.event.start_date} <b> End date:</b> {props.event.end_date}
-                      </Typography>
-                      </CardContent>
+            <CardContent>
+                <CardMedia
+                  className={classes.media}
+                  image={props.event.image}
+                  title="image Event"
+                  />
+                <br/>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Name: {props.event.name}
+                  </Typography>
+                  <Typography component="p">
+                    Description: {props.event.description} 
+                  <br/>
+                  <br/>
+                  <b>Start date:</b> {props.event.start_date} <b> End date:</b> {props.event.end_date}
+                </Typography>
+              </CardContent>
             </Card>
         </div>
     )

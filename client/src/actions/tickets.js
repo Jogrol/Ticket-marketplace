@@ -7,13 +7,13 @@ const baseUrl = 'http://localhost:4000'
 
 export const TICKETS_FETCHED = "TICKETS_FETCHED"
 export const ADD_TICKET_SUCCES = "ADD_TICKET_SUCCES"
-export const UPDATE_TICKET_SUCCES ="UPDATE_TICKET_SUCCES"
+export const UPDATE_TICKET_SUCCES = "UPDATE_TICKET_SUCCES"
 export const TICKET_FETCHED = "TICKET_FETCHED"
 
 const ticketFetched = ticket => ({
     type: TICKET_FETCHED,
     ticket
-  })
+})
 
 const addTicketSucces = (tickets) => ({
     type: ADD_TICKET_SUCCES,
@@ -25,21 +25,19 @@ const updateTicketSucces = (ticket) => ({
     ticket
 })
 
-const ticketsFetched = (tickets) => (
-    { type: TICKETS_FETCHED,
+const ticketsFetched = (tickets) => ({
+    type: TICKETS_FETCHED,
     tickets
 })
 
 export const loadTicket = (id) => dispatch => {
     request
-    .get(`${baseUrl}/tickets/${id}`)
+        .get(`${baseUrl}/tickets/${id}`)
         .then(response => {
-            dispatch(ticketFetched(response.body)
-        )})
-    .catch(console.error)
-    }
-
-
+            dispatch(ticketFetched(response.body))
+        })
+        .catch(console.error)
+}
 
 export const addTicketToDB = (data) => dispatch => {
     const jwt = store.getState().currentUser.jwt
@@ -54,21 +52,22 @@ export const addTicketToDB = (data) => dispatch => {
         event: data.event,
         user: store.getState().currentUser.user.id
     }
-        request
-          .post(`${baseUrl}/tickets`)
-          .set('Authorization', `Bearer ${jwt}`)
-          .send(updateData)
-          .then(response => {console.log(response)
+    request
+        .post(`${baseUrl}/tickets`)
+        .set('Authorization', `Bearer ${jwt}`)
+        .send(updateData)
+        .then(response => {
+            console.log(response)
             dispatch(addTicketSucces(response.body.tickets))
-          })
-          .catch(console.error)
-      }
+        })
+        .catch(console.error)
+}
 
 export const updateTicket = (id, data) => (dispatch) => {
     const jwt = store.getState().currentUser.jwt
 
     if (isExpired(jwt)) return dispatch(userLogOut())
-    
+
     const updateData = {
         name: data.name,
         description: data.description,
@@ -77,22 +76,22 @@ export const updateTicket = (id, data) => (dispatch) => {
         event: data.event,
         user: store.getState().currentUser.user.id
     }
-        request
-          .put(`${baseUrl}/tickets/${id}`)
-          .set('Authorization', `Bearer ${jwt}`)
-          .send(updateData)
-          .then(response => {
+    request
+        .put(`${baseUrl}/tickets/${id}`)
+        .set('Authorization', `Bearer ${jwt}`)
+        .send(updateData)
+        .then(response => {
             dispatch(updateTicketSucces(response.body))
-          })
-          .catch(console.error)
-      }
+        })
+        .catch(console.error)
+}
 
 
 export const loadTickets = () => (dispatch, getState) => {
     if (getState().tickets) return null
     request(`${baseUrl}/tickets`)
-      .then(response => { 
-        dispatch(ticketsFetched(response.body.tickets))
-      })
-      .catch(console.error)
-  }
+        .then(response => {
+            dispatch(ticketsFetched(response.body.tickets))
+        })
+        .catch(console.error)
+}

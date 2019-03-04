@@ -12,7 +12,7 @@ class TicketFraudCheckContainer extends React.Component {
         this.state = {
           riskCalc: 5,
         }
-      }
+    }
 
     componentWillMount(){
       if(this.props.tickets && this.props.ticket.comments) {
@@ -33,16 +33,17 @@ class TicketFraudCheckContainer extends React.Component {
         const ticketsFilteredByEvent =  this.props.tickets.filter(ticket => ticket.event.id == this.props.ticket.event.id)
         const avgPricePerEvent = ticketsFilteredByEvent.reduce((prev, ticket) => prev + Number(ticket.price), 0)/ticketsFilteredByEvent.length
         const differenceInPercentage = 100/avgPricePerEvent*this.props.ticket.price-100
-        if (differenceInPercentage < 0) {
-            let addPositive = differenceInPercentage*-1
-            score=+addPositive
-        } else {
-            if (differenceInPercentage > 10){
-                score=-10
-            } else {
-                score=-differenceInPercentage
-            }
-        }
+          if (differenceInPercentage < 0) {
+              let addPositive = differenceInPercentage*-1
+              score=+addPositive
+          } else {
+              if (differenceInPercentage > 10){
+                  score=-10
+              } else {
+                  score=-differenceInPercentage
+              }
+          }
+
         if (score < 6) {this.setState({riskCalc: 5})
         } else if (score > 95) {this.setState({riskCalc: 95})
         } else {this.setState({riskCalc: parseInt(score)})}
@@ -53,12 +54,11 @@ class TicketFraudCheckContainer extends React.Component {
     if (this.props.ticket.length === 0) return "Loading...."
       console.log(this.state.riskCalc)
       return (
-        
           <div>
-          <TicketFraudCheck score={this.state.riskCalc} fraudChecker={this.fraudChecker}/>
-  		 </div>
+            <TicketFraudCheck score={this.state.riskCalc} fraudChecker={this.fraudChecker}/>
+  		    </div>
       )
-      }
+    }
   }
   
   const mapStateToProps = state => (

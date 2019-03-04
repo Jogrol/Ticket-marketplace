@@ -32,12 +32,8 @@ state = {
   }
 
   render() {
-		if (this.props.signIn.success) return (
-			<Redirect to="/" />
-		)
-
+		if (this.props.signIn.success) return (<Redirect to="/" />)
 		return (
-      
 			<div>
         <SignIn
           onSubmit={this.onSubmit}
@@ -45,11 +41,8 @@ state = {
           values={this.state}
           sigIn={this.props.signIn}
         />
-
-				<p style={{color:'red'}}>{ this.props.signIn.errorMessage }</p>
 			</div>
     )
-
 	}
 }
 
