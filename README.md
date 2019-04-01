@@ -11,7 +11,7 @@ Fulllstack app. TicketSwap Clone.
 - Authorization: Register and login
 
 ## Technologies used
-- **[React](https://github.com/Jogrol/Ticket-marketplace/blob/master/client/src/components/AddTicketContainer.js)**  
+- **[React](https://github.com/Jogrol/Ticket-marketplace/blob/master/client/src/components/AddEventContainer.js)**  
 - **[Redux](https://github.com/Jogrol/Ticket-marketplace/blob/master/client/src/reducers/events.js)**  
 - **[TypeScript](https://github.com/Jogrol/Ticket-marketplace/blob/master/server/src/db.ts)**  
 - **[typeORM](https://github.com/Jogrol/Ticket-marketplace/blob/master/server/src/db.ts)**
