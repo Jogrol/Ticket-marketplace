@@ -1,10 +1,20 @@
-# TicketSwap-Clone
-Ticket swap clone, Fulllstack app
+# What this project is about.
+Fulllstack app. TicketSwap Clone.
 
-Ticket marketplace app
+## Features
+- Show list of events
+- Add event to list
+- Show list of tickets per event
+- Add ticket to event
+- Show list of comments per ticket
+- Add comment to ticket
+- Authorization: Register and login
 
 ## Technologies used
-- **[React](./src/containers/Game.js)**  
-- **[Redux](./src/reducers/question.js)**  
-- **[TypeScript](./src/reducers/question.js)**  
-- **[TypeScript](./src/reducers/question.js)**  
+- **[React](https://github.com/Jogrol/Ticket-marketplace/blob/master/client/src/components/AddTicketContainer.js)**  
+- **[Redux](https://github.com/Jogrol/Ticket-marketplace/blob/master/client/src/reducers/events.js)**  
+- **[TypeScript](https://github.com/Jogrol/Ticket-marketplace/blob/master/server/src/db.ts)**  
+- **[typeORM](https://github.com/Jogrol/Ticket-marketplace/blob/master/server/src/db.ts)**
+
+
+
