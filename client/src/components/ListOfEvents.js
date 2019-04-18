@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
@@ -65,26 +64,22 @@ function ListOfEvents (props) {
                 {event.name} 
                 </Typography>
               <Typography component="p">
-                {/* Description: {event.description} 
-                <br/> */}
                 <b>Start date:</b> {event.start_date} <b>End date:</b> {event.end_date}
                 </Typography>
-                <Link to = {`/events/${event.id}/`} className={classes.buttonDecoraction}><Button>
-                More info
-                </Button></Link>
+              <Link to = {`/events/${event.id}/`} className={classes.buttonDecoraction}>
+                <Button>More info</Button>
+                </Link>
               </CardContent>
               <br/>
-
             </Card>)}
           </div>
             <div className={classes.navigationButtons}>
               <Button  onClick={() => props.goBack()}>Back</Button>
               <Button  onClick={() => props.nextPage()}>Next</Button>
-             
             </div>
           <br/>
           <div>
-          <AddEventContainer /> 
+            <AddEventContainer /> 
           </div>
         </div> )
     

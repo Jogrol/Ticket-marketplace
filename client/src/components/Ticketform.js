@@ -4,8 +4,19 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
+import { Link } from 'react-router-dom'
 
 export default function TicketForm (props) {
+
+    if (props.currentUser === null) return (
+        <div>
+          <Typography component="h4" variant="h4" gutterBottom>
+              Add Ticket
+            </Typography>
+            You need to login first to add a ticket.
+            <br/>
+            <Link to = {"/login"}>Login here</Link>
+        </div>)
 
     return(
         <div>

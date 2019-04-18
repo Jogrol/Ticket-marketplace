@@ -30,7 +30,7 @@ class TicketFraudCheckContainer extends React.Component {
         const filterTicketsperUser = this.props.tickets.filter(ticket => ticket.user.id === this.props.ticket.user.id)
         if ((filterTicketsperUser.length > 1)) {score=+5}
 
-        const ticketsFilteredByEvent =  this.props.tickets.filter(ticket => ticket.event.id == this.props.ticket.event.id)
+        const ticketsFilteredByEvent =  this.props.tickets.filter(ticket => ticket.event.id === this.props.ticket.event.id)
         const avgPricePerEvent = ticketsFilteredByEvent.reduce((prev, ticket) => prev + Number(ticket.price), 0)/ticketsFilteredByEvent.length
         const differenceInPercentage = 100/avgPricePerEvent*this.props.ticket.price-100
           if (differenceInPercentage < 0) {
@@ -52,7 +52,6 @@ class TicketFraudCheckContainer extends React.Component {
     
     render() {
     if (this.props.ticket.length === 0) return "Loading...."
-      console.log(this.state.riskCalc)
       return (
           <div>
             <TicketFraudCheck score={this.state.riskCalc} fraudChecker={this.fraudChecker}/>

@@ -5,7 +5,6 @@ import {userLogOut} from './users'
 
 const baseUrl = 'http://localhost:4000'
 
-export const ADD_COMMENT_SUCCES = "ADD_COMMENT_SUCCES"
 export const UPDATE_COMMENTS_TICKET = "UPDATE_COMMENTS_TICKET"
 
 const addCommentToTicket = (ticket) => ({

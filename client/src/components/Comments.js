@@ -27,21 +27,21 @@ function Comments (props) {
     const { classes } = props;
     
     if (props.comments.length === 0) return  (
-            <div> 
-            <Typography component="h5" variant="h5" gutterBottom>
+      <div> 
+        <Typography component="h5" variant="h5" gutterBottom>
             Comments
-            </Typography>
-            <Card> 
-              <CardContent>
-                <Typography component="p">
+          </Typography>
+        <Card> 
+          <CardContent>
+            <Typography component="p">
                 No comments
-                  </Typography>
-              </CardContent>
-            </Card>
-            </div>)
+              </Typography>
+          </CardContent>
+        </Card>
+      </div>)
 
     return(
-        <div> 
+      <div> 
         <br />
         <Typography component="h5" variant="h5" gutterBottom>
          Comments
@@ -57,7 +57,7 @@ function Comments (props) {
               </Typography>
           </CardContent>
         </Card>)}
-        </div>
+      </div>
     )
 }
 export default withStyles(styles)(Comments);

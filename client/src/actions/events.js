@@ -24,10 +24,10 @@ const eventFetched = event => ({
   event
 })
 
-export const loadEvents = () => (dispatch, getState) => {
-  if (getState().events) return null
+export const loadEvents = () => (dispatch) => {
+  if (store.getState().events) return null
   request(`${baseUrl}/events`)
-    .then(response => { console.log(response)
+    .then(response => {
       dispatch(eventsFetched(response.body.events))
     })
     .catch(console.error)

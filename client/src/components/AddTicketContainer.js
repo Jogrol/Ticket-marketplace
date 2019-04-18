@@ -38,14 +38,15 @@ class AddTicketContainer extends React.Component {
   }
 
   render() {
-    if (this.props.currentUser === null) return <div>
+    if (this.props.currentUser === null) return (
+    <div>
       <Typography component="h4" variant="h4" gutterBottom>
-      Add Ticket
-      </Typography>
-      You need to login first to add a ticket.
-      <br/>
-      <Link to = {"/login"}>Login here</Link>
-      </div>
+          Add Ticket
+        </Typography>
+        You need to login first to add a ticket.
+        <br/>
+        <Link to = {"/login"}>Login here</Link>
+    </div>)
 
     return (
       <TicketForm

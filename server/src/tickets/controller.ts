@@ -25,9 +25,7 @@ export default class TicketsController {
     @Authorized()
     @Put("/tickets/:id")
     async updateTicket(@Param("id") id: number, @Body() update: Partial<Ticket>) {
-      console.log(id)
     const ticket = await Ticket.findOne(id);
-    console.log('get ticket by id',ticket)
     if (!ticket) throw new NotFoundError("Cannot find ticket");
     return Ticket.merge(ticket, update).save();
     }

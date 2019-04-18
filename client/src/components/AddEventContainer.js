@@ -2,8 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {addEventToDB} from '../actions/events'
 import EventForm from './Eventform'
-import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom'
+
+
 
 class AddEventContainer extends React.Component {
   
@@ -23,6 +23,7 @@ class AddEventContainer extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
+    this.props.addEventToDB(this.state)
     this.setState({
         name: '',
         start_date: '',
@@ -30,24 +31,17 @@ class AddEventContainer extends React.Component {
         description: '',
         image: '',
       })
-    this.props.addEventToDB(this.state)
     }
 
+
+
   render() {
-    if (this.props.currentUser === null) return <div>
-            <Typography component="h4" variant="h4" gutterBottom>
-              Add Event
-            </Typography>
-              You need to login first to add an event.
-              <br/>
-              <Link to = {"/login"}>Login here</Link>
-          </div>
-    
     return (
       <EventForm
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         values={this.state}
+        currentUser={this.props.currentUser}
       />)
     }
 }

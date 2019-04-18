@@ -29,9 +29,7 @@ class App extends Component {
           <Route path="/events/:id/add-ticket" exact component={AddTicketContainer} />
         </div>
         <div>
-        <foote style={{
-          textalign:'center'
-        }}>
+        <foote>
           <p>Made with love by Joey Grolleman</p>
         </foote>
         </div>
