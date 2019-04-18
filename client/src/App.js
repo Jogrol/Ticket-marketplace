@@ -16,25 +16,25 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-       <MuiThemeProvider>
-        <div>
-        <NavBar/>
-          <Route path="/" exact component={ListOfEventsContainer} />
-          <Route path="/sigin" exact component={SignInContainer} />
-          <Route path="/login" exact component={LoginContainer} />
-          <Route path='/events/add-event' exact component={AddEventContainer} />
-          <Route path="/events/:id" exact component={EventDetailsContainer} />
-          <Route path="/events/:id/tickets/:id" exact component={TicketContainer} />
-          <Route path="/events/:id/add-ticket" exact component={AddTicketContainer} />
-        </div>
-        <div>
-        <foote>
-          <p>Made with love by Joey Grolleman</p>
-        </foote>
-        </div>
-        </MuiThemeProvider>
-      </Provider>
+      <div style={{textAlign: 'center'}}>
+        <Provider store={store}>
+        <MuiThemeProvider>
+          <div>
+          <NavBar/>
+            <Route path="/" exact component={ListOfEventsContainer} />
+            <Route path="/sigin" exact component={SignInContainer} />
+            <Route path="/login" exact component={LoginContainer} />
+            <Route path='/events/add-event' exact component={AddEventContainer} />
+            <Route path="/events/:id" exact component={EventDetailsContainer} />
+            <Route path="/events/:id/tickets/:id" exact component={TicketContainer} />
+            <Route path="/events/:id/add-ticket" exact component={AddTicketContainer} />
+          </div>
+          <footer style={{dispay: 'inline-block'}}>
+            <p>Made with love by Joey Grolleman</p>
+          </footer>
+          </MuiThemeProvider>
+        </Provider>
+      </div>
     );
   }
 }

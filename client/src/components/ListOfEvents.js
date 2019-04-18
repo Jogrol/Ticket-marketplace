@@ -48,7 +48,7 @@ function ListOfEvents (props) {
     <div className={classes.homeScreen}>
           <br/>
         <Typography component="h2" variant="h2" gutterBottom>
-                Events
+            Events
         </Typography>
         <div className={classes.cardContainer}>
         {props.events.map((event) => 
@@ -70,17 +70,18 @@ function ListOfEvents (props) {
                 <Button>More info</Button>
                 </Link>
               </CardContent>
+ 
               <br/>
             </Card>)}
+            <Card className={classes.card}>      
+              <AddEventContainer /> 
+              </Card>
           </div>
             <div className={classes.navigationButtons}>
               <Button  onClick={() => props.goBack()}>Back</Button>
               <Button  onClick={() => props.nextPage()}>Next</Button>
             </div>
           <br/>
-          <div>
-            <AddEventContainer /> 
-          </div>
         </div> )
     
 }
